@@ -1,0 +1,84 @@
+@using LinearRegression.Web.Models
+@using System.Globalization
+
+<section class="panel table-panel" aria-labelledby="table-title">
+    <div class="panel-heading">
+        <div class="heading-copy">
+            <h2 id="table-title">Linear Regression Table</h2>
+            <span class="count-badge">@Points.Count records</span>
+        </div>
+        <button type="button" class="table-add-button" @onclick="OpenAddModal">
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M10 4v12M4 10h12"></path>
+            </svg>
+            <span>Add X and Y Values</span>
+        </button>
+    </div>
+    <div class="regression-table-scroll">
+        <table class="regression-table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">x</th>
+                    <th scope="col">y</th>
+                    <th scope="col">x - x̄</th>
+                    <th scope="col">y - ȳ</th>
+                    <th scope="col">(x - x̄) (y - ȳ)</th>
+                    <th scope="col">(x - x̄)²</th>
+                    <th scope="col">Predicted Y</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var row = 1; row <= (Points.Count == 0 ? 5 : Points.Count); row++)
+                {
+                    var point = Points.Count >= row ? Points[row - 1] : null;
+                    <tr>
+                        <th scope="row">@row</th>
+                        <td>@(point is null ? "—" : point.X.ToString("G", CultureInfo.InvariantCulture))</td>
+                        <td>@(point is null ? "—" : point.Y.ToString("G", CultureInfo.InvariantCulture))</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th scope="row">Σ Sum</th>
+                    @for (var column = 0; column < 8; column++)
+                    {
+                        <td>—</td>
+                    }
+                </tr>
+                <tr>
+                    <th scope="row">Mean</th>
+                    @for (var column = 0; column < 8; column++)
+                    {
+                        <td>—</td>
+                    }
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <AddValueModal IsVisible="IsAddModalVisible"
+                   Points="Points"
+                   OnClose="CloseAddModal"
+                   OnAdd="AddPoint" />
+</section>
+
+@code {
+    [Parameter, EditorRequired] public IReadOnlyList<DataPoint> Points { get; set; } = [];
+    [Parameter] public EventCallback<DataPoint> OnPointAdded { get; set; }
+
+    private bool IsAddModalVisible { get; set; }
+
+    private void OpenAddModal() => IsAddModalVisible = true;
+
+    private void CloseAddModal() => IsAddModalVisible = false;
+
+    private Task AddPoint(DataPoint point) => OnPointAdded.InvokeAsync(point);
+}

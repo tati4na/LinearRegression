@@ -23,8 +23,20 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
+[D:/Alex/BSIT 3/FIRST SEM/PROF ELEC 3/LinearRegression/src/LinearRegression.Web/Components/AddValueModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBZGRWYWx1ZU1vZGFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Alex/BSIT 3/FIRST SEM/PROF ELEC 3/LinearRegression/src/LinearRegression.Web/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alex/BSIT 3/FIRST SEM/PROF ELEC 3/LinearRegression/src/LinearRegression.Web/Components/BareLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCYXJlTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alex/BSIT 3/FIRST SEM/PROF ELEC 3/LinearRegression/src/LinearRegression.Web/Components/FormulaCards.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xGb3JtdWxhQ2FyZHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Alex/BSIT 3/FIRST SEM/PROF ELEC 3/LinearRegression/src/LinearRegression.Web/Components/Pages/Counter.razor]
@@ -47,8 +59,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Alex/BSIT 3/FIRST SEM/PROF ELEC 3/LinearRegression/src/LinearRegression.Web/Components/RegressionTablePlaceholder.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSZWdyZXNzaW9uVGFibGVQbGFjZWhvbGRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Alex/BSIT 3/FIRST SEM/PROF ELEC 3/LinearRegression/src/LinearRegression.Web/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Alex/BSIT 3/FIRST SEM/PROF ELEC 3/LinearRegression/src/LinearRegression.Web/Components/ScatterPlot.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2F0dGVyUGxvdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Alex/BSIT 3/FIRST SEM/PROF ELEC 3/LinearRegression/src/LinearRegression.Web/Components/_Imports.razor]

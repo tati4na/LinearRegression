@@ -1,0 +1,179 @@
+@using System.Globalization
+@using LinearRegression.Web.Models
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Rendering
+
+<!-- Interactive scatter plot section -->
+<section class="panel plot-panel" aria-labelledby="plot-title">
+    <div class="plot-heading">
+        <div class="plot-title-group">
+            <div class="heading-copy">
+                <h2 id="plot-title">Linear Regression Scatter Plot</h2>
+                <span class="model-pill plot-model">@ModelText</span>
+            </div>
+            <p class="plot-subtitle">Hover over any point to inspect coordinates, predicted values, and residuals.</p>
+        </div>
+        <div class="plot-controls" aria-label="Plot options">
+            <button type="button" class="toggle-button @(ShowLine ? "active" : null)" aria-pressed="@ShowLine" @onclick="() => ShowLine = !ShowLine"><span class="line-key">—</span> Regression Line</button>
+            <button type="button" class="toggle-button @(ShowResiduals ? "active" : null)" aria-pressed="@ShowResiduals" @onclick="() => ShowResiduals = !ShowResiduals"><span class="dash-key">--</span> Residuals (Errors)</button>
+            <button type="button" class="toggle-button @(ShowMean ? "active" : null)" aria-pressed="@ShowMean" @onclick="() => ShowMean = !ShowMean"><span class="dot-key">●</span> Mean (x̄, ȳ)</button>
+            <button type="button" class="toggle-button add-toggle @(AddMode ? "active" : null)" aria-pressed="@AddMode" @onclick="() => AddMode = !AddMode"><span aria-hidden="true">⌖</span> Click to Add Point</button>
+        </div>
+    </div>
+    <div class="chart-wrap">
+        <svg class="chart-svg @(AddMode ? "add-mode" : null)" viewBox="0 0 700 420" role="img" aria-label="Scatter plot of the current data points">
+            <defs><clipPath id="plot-clip"><rect x="@Left" y="@Top" width="@PlotWidth" height="@PlotHeight"></rect></clipPath></defs>
+            <rect x="@Left" y="@Top" width="@PlotWidth" height="@PlotHeight" class="plot-background"></rect>
+            @foreach (var tick in XTicks)
+            {
+                var x = ScaleX(tick);
+                <line x1="@Svg(x)" y1="@Top" x2="@Svg(x)" y2="@Bottom" class="grid-line"></line>
+                @SvgLabel(x, Bottom + 20, "tick-label", "middle", TickText(tick))
+            }
+            @foreach (var tick in YTicks)
+            {
+                var y = ScaleY(tick);
+                <line x1="@Left" y1="@Svg(y)" x2="@Right" y2="@Svg(y)" class="grid-line"></line>
+                @SvgLabel(Left - 12, y + 4, "tick-label", "end", TickText(tick))
+            }
+            <line x1="@Left" y1="@Top" x2="@Left" y2="@Bottom" class="axis-line"></line>
+            <line x1="@Left" y1="@Bottom" x2="@Right" y2="@Bottom" class="axis-line"></line>
+            <text x="@Svg((Left + Right) / 2)" y="400" class="axis-title" text-anchor="middle">Independent Variable (x)</text>
+            <text x="18" y="@Svg((Top + Bottom) / 2)" class="axis-title" text-anchor="middle" transform="rotate(-90 18 @Svg((Top + Bottom) / 2))">Dependent Variable (y)</text>
+            <g clip-path="url(#plot-clip)">
+                @if (Result.IsValid && ShowResiduals)
+                {
+                    @foreach (var point in Points)
+                    {
+                        var row = RowFor(point.Id);
+                        @if (row is not null)
+                        {
+                            <line x1="@Svg(ScaleX(point.X))" y1="@Svg(ScaleY(point.Y))" x2="@Svg(ScaleX(point.X))" y2="@Svg(ScaleY(row.Predicted))" class="residual-line"></line>
+                        }
+                    }
+                }
+                @if (Result.IsValid && ShowLine)
+                {
+                    <line x1="@Left" y1="@Svg(ScaleY(Result.A + Result.B * MinX))" x2="@Right" y2="@Svg(ScaleY(Result.A + Result.B * MaxX))" class="regression-line"></line>
+                }
+                @if (Result.IsValid && ShowMean)
+                {
+                    var meanX = ScaleX(Result.MeanX);
+                    var meanY = ScaleY(Result.MeanY);
+                    <line x1="@Svg(meanX)" y1="@Top" x2="@Svg(meanX)" y2="@Bottom" class="mean-guide"></line>
+                    <line x1="@Left" y1="@Svg(meanY)" x2="@Right" y2="@Svg(meanY)" class="mean-guide"></line>
+                    <circle cx="@Svg(meanX)" cy="@Svg(meanY)" r="9" class="centroid-ring"></circle>
+                    <circle cx="@Svg(meanX)" cy="@Svg(meanY)" r="5" class="centroid-dot"></circle>
+                }
+                @foreach (var point in Points)
+                {
+                    <circle cx="@Svg(ScaleX(point.X))" cy="@Svg(ScaleY(point.Y))" r="5" class="data-point" @onmouseover="() => HoveredId = point.Id" @onmouseout="() => HoveredId = null"></circle>
+                }
+                @if (HoveredPoint is not null && HoveredRow is not null)
+                {
+                    var tooltipX = Math.Clamp(ScaleX(HoveredPoint.X) - 90, Left, Right - TooltipWidth);
+                    var tooltipY = Math.Clamp(ScaleY(HoveredPoint.Y) - 82, Top, Bottom - TooltipHeight);
+                    <g class="plot-tooltip" transform="translate(@Svg(tooltipX) @Svg(tooltipY))" pointer-events="none">
+                        <rect width="@TooltipWidth" height="@TooltipHeight" rx="8"></rect>
+                        <text x="12" y="20">x: @Format(HoveredPoint.X)</text>
+                        <text x="12" y="37">y: @Format(HoveredPoint.Y)</text>
+                        <text x="12" y="54">predicted: @Format(HoveredRow.Predicted)</text>
+                        <text x="12" y="71">residual: @Format(HoveredRow.Residual)</text>
+                    </g>
+                }
+            </g>
+            @if (Points.Count == 0)
+            {
+                @SvgLabel((Left + Right) / 2, (Top + Bottom) / 2, "empty-chart-text", "middle", "No data yet. Turn on 'Click to Add Point' and click the plot.")
+            }
+            @if (AddMode)
+            {
+                <rect x="@Left" y="@Top" width="@PlotWidth" height="@PlotHeight" class="click-layer" @onclick="HandlePlotClick"></rect>
+            }
+        </svg>
+    </div>
+    <div class="plot-legend">
+        <span><i class="legend-dot"></i>Data Point (x, y)</span>
+        <span><i class="legend-line"></i>Fitted Line (y = a + bX)</span>
+        <span><i class="legend-dash"></i>Residual Error (y - ŷ)</span>
+        <span><i class="legend-centroid"></i>Centroid (x̄=@MeanValue(Result.MeanX), ȳ=@MeanValue(Result.MeanY))</span>
+    </div>
+</section>
+
+@code {
+    [Parameter, EditorRequired] public IReadOnlyList<DataPoint> Points { get; set; } = [];
+    [Parameter, EditorRequired] public RegressionResult Result { get; set; } = default!;
+    [Parameter] public int Decimals { get; set; } = 3;
+    [Parameter] public EventCallback<DataPoint> OnPointAdded { get; set; }
+
+    private const double SvgWidth = 700;
+    private const double SvgHeight = 420;
+    private const double Left = 70;
+    private const double RightMargin = 30;
+    private const double Top = 30;
+    private const double BottomMargin = 60;
+    private const double TooltipWidth = 180;
+    private const double TooltipHeight = 82;
+    private const double PlotWidth = SvgWidth - Left - RightMargin;
+    private const double PlotHeight = SvgHeight - Top - BottomMargin;
+    private bool ShowLine { get; set; } = true;
+    private bool ShowResiduals { get; set; } = true;
+    private bool ShowMean { get; set; } = true;
+    private bool AddMode { get; set; }
+    private int? HoveredId { get; set; }
+
+    private double MinX => Domain(Points.Select(point => point.X)).Min;
+    private double MaxX => Domain(Points.Select(point => point.X)).Max;
+    private double MinY => Domain(Points.Select(point => point.Y)).Min;
+    private double MaxY => Domain(Points.Select(point => point.Y)).Max;
+    private double Bottom => SvgHeight - BottomMargin;
+    private double Right => SvgWidth - RightMargin;
+    private IEnumerable<double> XTicks => Ticks(MinX, MaxX);
+    private IEnumerable<double> YTicks => Ticks(MinY, MaxY);
+    private DataPoint? HoveredPoint => HoveredId is int id ? Points.FirstOrDefault(point => point.Id == id) : null;
+    private PointRow? HoveredRow => HoveredPoint is null ? null : RowFor(HoveredPoint.Id);
+    private string ModelText => Result.IsValid ? $"y = {Format(Result.A)} + {Format(Result.B)}X" : "y = —";
+
+    private (double Min, double Max) Domain(IEnumerable<double> values)
+    {
+        var data = values.ToList();
+        if (data.Count == 0) return (0, 10);
+        var min = data.Min();
+        var max = data.Max();
+        if (min == max) return (min - 1, max + 1);
+        var padding = (max - min) * 0.1;
+        return (min - padding, max + padding);
+    }
+
+    private static IEnumerable<double> Ticks(double min, double max) => Enumerable.Range(0, 6).Select(index => min + (max - min) * index / 5d);
+    private double ScaleX(double value) => Left + (value - MinX) / (MaxX - MinX) * PlotWidth;
+    private double ScaleY(double value) => Top + (MaxY - value) / (MaxY - MinY) * PlotHeight;
+    private double InvertX(double value) => MinX + (value - Left) / PlotWidth * (MaxX - MinX);
+    private double InvertY(double value) => MaxY - (value - Top) / PlotHeight * (MaxY - MinY);
+    private static string Svg(double value) => value.ToString("0.###", CultureInfo.InvariantCulture);
+    private static string TickText(double value) => value.ToString("F1", CultureInfo.InvariantCulture);
+    private string Format(double value) => value.ToString($"F{Math.Clamp(Decimals, 0, 15)}", CultureInfo.InvariantCulture);
+    private string MeanValue(double value) => Result.IsValid ? Format(value) : "—";
+    private PointRow? RowFor(int id) => Result.IsValid ? Result.Rows.FirstOrDefault(row => row.Id == id) : null;
+
+    private RenderFragment SvgLabel(double x, double y, string cssClass, string anchor, string text) => builder =>
+    {
+        builder.OpenElement(0, "text");
+        builder.AddAttribute(1, "x", Svg(x));
+        builder.AddAttribute(2, "y", Svg(y));
+        builder.AddAttribute(3, "class", cssClass);
+        builder.AddAttribute(4, "text-anchor", anchor);
+        builder.AddContent(5, text);
+        builder.CloseElement();
+    };
+
+    private async Task HandlePlotClick(MouseEventArgs args)
+    {
+        var svgX = Left + args.OffsetX;
+        var svgY = Top + args.OffsetY;
+        var x = Math.Round(InvertX(Math.Clamp(svgX, Left, Right)), 2);
+        var y = Math.Round(InvertY(Math.Clamp(svgY, Top, Bottom)), 2);
+        var id = Points.Select(point => point.Id).DefaultIfEmpty(0).Max() + 1;
+        await OnPointAdded.InvokeAsync(new DataPoint(id, x, y));
+    }
+}
