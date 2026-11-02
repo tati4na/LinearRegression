@@ -11,7 +11,11 @@
                  @onclick:stopPropagation>
             <header class="add-values-header">
                 <h2 id="add-values-title">Add X and Y Values</h2>
-                <button type="button" class="modal-close-button" aria-label="Close" @onclick="OnClose">X</button>
+                <button type="button" class="modal-close-button" aria-label="Close" @onclick="OnClose">
+                    <svg viewBox="0 0 20 20" aria-hidden="true">
+                        <path d="m5 5 10 10M15 5 5 15"></path>
+                    </svg>
+                </button>
             </header>
             <form class="add-values-form" @onsubmit="SubmitAndClose" @onsubmit:preventDefault>
                 <div class="add-values-fields">
@@ -19,20 +23,12 @@
                         <span>X Value</span>
                         <span class="number-input-wrap">
                             <input type="number" step="any" @bind="XValue" required aria-label="X Value" />
-                            <span class="number-stepper" aria-label="Adjust X Value">
-                                <button type="button" aria-label="Increase X Value" @onclick="() => AdjustValue(true, 1)">+</button>
-                                <button type="button" aria-label="Decrease X Value" @onclick="() => AdjustValue(true, -1)">−</button>
-                            </span>
                         </span>
                     </label>
                     <label class="value-field">
                         <span>Y Value</span>
                         <span class="number-input-wrap">
                             <input type="number" step="any" @bind="YValue" required aria-label="Y Value" />
-                            <span class="number-stepper" aria-label="Adjust Y Value">
-                                <button type="button" aria-label="Increase Y Value" @onclick="() => AdjustValue(false, 1)">+</button>
-                                <button type="button" aria-label="Decrease Y Value" @onclick="() => AdjustValue(false, -1)">−</button>
-                            </span>
                         </span>
                     </label>
                 </div>
@@ -41,8 +37,11 @@
                     <p class="add-values-error" role="alert">@ValidationError</p>
                 }
                 <footer class="add-values-actions">
-                    <button type="button" class="modal-secondary-button" @onclick="AddAndAnother">Add &amp; Another</button>
-                    <button type="submit" class="modal-primary-button">Add</button>
+                    @if (EditingPoint is null)
+                    {
+                        <button type="button" class="modal-secondary-button" @onclick="AddAndAnother">Add &amp; Another</button>
+                    }
+                    <button type="submit" class="modal-primary-button">@(EditingPoint is null ? "Add" : "Save")</button>
                 </footer>
             </form>
         </section>
@@ -52,40 +51,28 @@
 @code {
     [Parameter] public bool IsVisible { get; set; }
     [Parameter, EditorRequired] public IReadOnlyList<DataPoint> Points { get; set; } = [];
+    [Parameter] public DataPoint? EditingPoint { get; set; }
     [Parameter] public EventCallback OnClose { get; set; }
     [Parameter] public EventCallback<DataPoint> OnAdd { get; set; }
+    [Parameter] public EventCallback<DataPoint> OnUpdate { get; set; }
 
     private string XValue { get; set; } = string.Empty;
     private string YValue { get; set; } = string.Empty;
     private string? ValidationError { get; set; }
     private bool WasVisible { get; set; }
+    private int? PreviousEditingPointId { get; set; }
 
     protected override void OnParametersSet()
     {
-        if (IsVisible && !WasVisible)
+        if (IsVisible && (!WasVisible || EditingPoint?.Id != PreviousEditingPointId))
         {
-            XValue = string.Empty;
-            YValue = string.Empty;
+            XValue = EditingPoint?.X.ToString("G", CultureInfo.InvariantCulture) ?? string.Empty;
+            YValue = EditingPoint?.Y.ToString("G", CultureInfo.InvariantCulture) ?? string.Empty;
             ValidationError = null;
         }
 
         WasVisible = IsVisible;
-    }
-
-    private void AdjustValue(bool isX, int amount)
-    {
-        var current = ParseValue(isX ? XValue : YValue);
-        var adjusted = (current ?? 0) + amount;
-        if (isX)
-        {
-            XValue = adjusted.ToString("G", CultureInfo.InvariantCulture);
-        }
-        else
-        {
-            YValue = adjusted.ToString("G", CultureInfo.InvariantCulture);
-        }
-
-        ValidationError = null;
+        PreviousEditingPointId = EditingPoint?.Id;
     }
 
     private Task SubmitAndClose() => AddValues(closeAfterAdd: true);
@@ -102,10 +89,17 @@
             return;
         }
 
-        var id = Points.Select(point => point.Id).DefaultIfEmpty(0).Max() + 1;
-        await OnAdd.InvokeAsync(new DataPoint(id, x.Value, y.Value));
+        if (EditingPoint is not null)
+        {
+            await OnUpdate.InvokeAsync(new DataPoint(EditingPoint.Id, x.Value, y.Value));
+        }
+        else
+        {
+            var id = Points.Select(point => point.Id).DefaultIfEmpty(0).Max() + 1;
+            await OnAdd.InvokeAsync(new DataPoint(id, x.Value, y.Value));
+        }
 
-        if (closeAfterAdd)
+        if (closeAfterAdd || EditingPoint is not null)
         {
             await OnClose.InvokeAsync();
             return;

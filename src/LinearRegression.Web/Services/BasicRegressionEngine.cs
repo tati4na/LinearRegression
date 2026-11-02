@@ -1,3 +1,4 @@
+using LinearRegression.Core.Table;
 using LinearRegression.Web.Models;
 
 namespace LinearRegression.Web.Services;
@@ -7,35 +8,24 @@ public sealed class BasicRegressionEngine : IRegressionEngine
 {
     public RegressionResult Compute(IReadOnlyList<DataPoint> points)
     {
+        var table = RegressionTable.Calculate(
+            points.Select(point => new RegressionTableInput(point.Id, point.X, point.Y)).ToArray());
+
         if (points.Count == 0)
         {
             return InvalidResult();
         }
 
-        var meanX = points.Average(point => point.X);
-        var meanY = points.Average(point => point.Y);
-        var sumXY = points.Sum(point => (point.X - meanX) * (point.Y - meanY));
-        var sumXX = points.Sum(point => Math.Pow(point.X - meanX, 2));
-
-        if (points.Count < 2 || sumXX == 0 || !double.IsFinite(sumXX) || !double.IsFinite(sumXY))
+        if (table.Slope is not double slope || table.Intercept is not double intercept)
         {
-            return new RegressionResult(meanX, meanY, sumXY, sumXX, 0, 0, false, []);
+            return new RegressionResult(table.MeanX, table.MeanY, table.SumDeviationProduct, table.SumSquaredXDeviation, 0, 0, false, []);
         }
 
-        var b = sumXY / sumXX;
-        var a = meanY - b * meanX;
-        if (!double.IsFinite(a) || !double.IsFinite(b))
-        {
-            return new RegressionResult(meanX, meanY, sumXY, sumXX, 0, 0, false, []);
-        }
+        var rows = table.Rows
+            .Select(row => new PointRow(row.Id, row.PredictedY!.Value, row.Y - row.PredictedY.Value))
+            .ToList();
 
-        var rows = points.Select(point =>
-        {
-            var predicted = a + b * point.X;
-            return new PointRow(point.Id, predicted, point.Y - predicted);
-        }).ToList();
-
-        return new RegressionResult(meanX, meanY, sumXY, sumXX, b, a, true, rows);
+        return new RegressionResult(table.MeanX, table.MeanY, table.SumDeviationProduct, table.SumSquaredXDeviation, slope, intercept, true, rows);
     }
 
     private static RegressionResult InvalidResult() => new(0, 0, 0, 0, 0, 0, false, []);

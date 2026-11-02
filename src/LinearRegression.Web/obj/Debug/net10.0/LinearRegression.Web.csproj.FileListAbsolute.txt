@@ -207,4 +207,4 @@ D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\o
 D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\staticwebassets.development.json
 D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\swae.build.ex.cache
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\1tlqc51fbm-{0}-3aa2n1migd-3aa2n1migd.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\1tlqc51fbm-{0}-g79b65udp3-g79b65udp3.gz
