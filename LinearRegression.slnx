@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/LinearRegression.Core/LinearRegression.Core.csproj" />
+    <Project Path="src/LinearRegression.Web/LinearRegression.Web.csproj" />
+    <Project Path="src/LinearRegression/LinearRegression.csproj" />
+  </Folder>
+</Solution>
