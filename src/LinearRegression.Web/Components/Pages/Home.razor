@@ -1,7 +1,46 @@
 ﻿@page "/"
+@layout BareLayout
+@rendermode InteractiveServer
+@using LinearRegression.Web.Models
+@using LinearRegression.Web.Services
+@inject IRegressionEngine RegressionEngine
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Linear Regression Simulator</PageTitle>
 
-<h1>Hello, world!</h1>
+<main class="app-shell">
+	<header class="panel app-header">
+		<div class="brand-lockup">
+			<div class="brand-icon" aria-hidden="true">
+				<svg viewBox="0 0 32 32">
+					<path d="M6 24V8M6 24h20M9 21l6-6 4 2 7-9"></path>
+					<path d="M22 8h4v4"></path>
+				</svg>
+			</div>
+			<div>
+				<h1>Linear Regression Simulator</h1>
+				<p>Simulate linear regression in real-time</p>
+			</div>
+		</div>
+		<button type="button" class="add-placeholder" disabled>＋ <span>Add</span></button>
+	</header>
 
-Welcome to your new app.
+	<RegressionTablePlaceholder Points="Points" />
+	<FormulaCards Result="Result" Decimals="Decimals" />
+	<ScatterPlot Points="Points" Result="Result" Decimals="Decimals" OnPointAdded="AddPoint" />
+</main>
+
+@code {
+	private List<DataPoint> Points { get; set; } = [];
+	private RegressionResult Result { get; set; } = new(0, 0, 0, 0, 0, 0, false, []);
+	private int Decimals { get; set; } = 3;
+
+	protected override void OnInitialized() => Recompute();
+
+	private void AddPoint(DataPoint point)
+	{
+		Points.Add(point);
+		Recompute();
+	}
+
+	private void Recompute() => Result = RegressionEngine.Compute(Points);
+}

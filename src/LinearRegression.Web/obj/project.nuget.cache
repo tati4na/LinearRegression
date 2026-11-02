@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "5ok2VPgmShk=",
+  "dgSpecHash": "gB7lArc1n6U=",
   "success": true,
-  "projectFilePath": "D:\\Alex\\BSIT 3\\FIRST SEM\\PROF ELEC 3\\LinearRegression\\src\\LinearRegression.Web\\LinearRegression.Web.csproj",
+  "projectFilePath": "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\LinearRegression\\src\\LinearRegression.Web\\LinearRegression.Web.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.14\\microsoft.aspnetcore.app.internal.assets.10.0.14.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.12\\microsoft.aspnetcore.app.internal.assets.10.0.12.nupkg.sha512"
   ],
   "logs": []
 }

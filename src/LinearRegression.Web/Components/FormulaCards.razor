@@ -1,0 +1,50 @@
+@using System.Globalization
+@using LinearRegression.Web.Models
+
+<!-- Regression formula section -->
+<section class="formula-section" aria-labelledby="formula-title">
+    <div class="section-heading">
+        <h2 id="formula-title">Linear Regression Formula</h2>
+        <span class="model-pill">Solved Model: @ModelText</span>
+    </div>
+    <div class="formula-grid">
+        <article class="formula-card">
+            <h3>Straight Line Equation</h3>
+            <div class="equation-box">y = a + bX</div>
+            <div class="formula-divider"></div>
+            <p class="formula-label">Current Result:</p>
+            <p class="calculation strong">y = @Value(Result.A) + @Value(Result.B)X</p>
+        </article>
+        <article class="formula-card">
+            <h3>b Value Equation</h3>
+            <div class="equation-box equation-long">b = Σ(x - x̄)(y - ȳ) / Σ(x - x̄)²</div>
+            <div class="formula-divider"></div>
+            <p class="formula-label">Calculation (Slope B):</p>
+            <p class="calculation">b = @Value(Result.SumXY) / @Value(Result.SumXX)</p>
+            <p class="calculation strong">b = @Value(Result.B)</p>
+        </article>
+        <article class="formula-card">
+            <h3>a Value Equation</h3>
+            <div class="equation-box">a = ȳ - bx̄</div>
+            <div class="formula-divider"></div>
+            <p class="formula-label">Calculation (Intercept A):</p>
+            <p class="calculation">a = @Value(Result.MeanY) - (@Value(Result.B))(@Value(Result.MeanX))</p>
+            <p class="calculation strong">a = @Value(Result.A)</p>
+        </article>
+    </div>
+    @if (!Result.IsValid)
+    {
+        <p class="formula-note">Add at least 2 points with different x values.</p>
+    }
+</section>
+
+@code {
+    [Parameter, EditorRequired] public RegressionResult Result { get; set; } = default!;
+    [Parameter] public int Decimals { get; set; } = 3;
+
+    private string ModelText => Result.IsValid ? $"y = {Value(Result.A)} + {Value(Result.B)}X" : "—";
+
+    private string Value(double value) => Result.IsValid
+        ? value.ToString($"F{Math.Clamp(Decimals, 0, 15)}", CultureInfo.InvariantCulture)
+        : "—";
+}

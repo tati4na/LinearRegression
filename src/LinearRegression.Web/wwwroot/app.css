@@ -1,3 +1,4 @@
+/*
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -58,3 +59,93 @@ h1:focus {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
 }
+
+*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+    --pink: #db2777;
+    --pink-dark: #831843;
+    --pink-tint: #fdf2f8;
+    --pink-soft: #fce7f3;
+    --pink-border: #fbcfe8;
+    --pink-mid: #f9a8d4;
+    --pink-line: #be185d;
+    --pink-residual: #f472b6;
+    --pink-muted: #a64b78;
+    --page: #fff7fb;
+    --white: #ffffff;
+    --shadow: 0 8px 26px rgb(131 24 67 / 5%), 0 2px 6px rgb(131 24 67 / 3%);
+    --text-font: 'Inter', sans-serif;
+    --number-font: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; font-family: var(--text-font); }
+body { margin: 0; background: var(--page); color: var(--pink-dark); font-size: 14px; line-height: 1.5; }
+.app-shell { width: min(100% - 40px, 1000px); margin: 0 auto; padding: 28px 0 20px; display: grid; gap: 20px; }
+.panel, .formula-card { background: var(--white); border: 1px solid var(--pink-border); border-radius: 16px; box-shadow: var(--shadow); }
+.app-header { min-height: 88px; padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand-lockup, .heading-copy { display: flex; align-items: center; gap: 14px; }
+.brand-icon { width: 48px; height: 48px; flex: 0 0 48px; display: grid; place-items: center; border-radius: 13px; background: var(--pink); }
+.brand-icon svg { width: 29px; fill: none; stroke: var(--white); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+h1, h2, h3, p { margin: 0; }
+h1 { color: var(--pink-dark); font-size: 20px; font-weight: 700; line-height: 1.25; }
+.brand-lockup p { margin-top: 4px; color: var(--pink-muted); font-size: 12px; }
+.add-placeholder { border: 0; border-radius: 999px; background: var(--pink); color: var(--white); padding: 9px 18px; font-weight: 600; opacity: .58; cursor: not-allowed; }
+.table-panel { overflow: hidden; }
+.panel-heading { min-height: 58px; padding: 15px 20px; border-bottom: 1px solid var(--pink-soft); }
+.panel-heading h2, .section-heading h2, .plot-heading h2 { font-size: 16px; font-weight: 700; }
+.count-badge, .model-pill { padding: 4px 9px; border: 1px solid var(--pink-border); border-radius: 7px; background: var(--pink-tint); color: var(--pink-dark); font-family: var(--number-font); font-size: 11px; white-space: nowrap; }
+.placeholder-box { min-height: 220px; margin: 20px; border: 1px dashed var(--pink-mid); border-radius: 12px; background: var(--pink-tint); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--pink-muted); text-align: center; }
+.placeholder-icon { width: 28px; height: 28px; fill: none; stroke: var(--pink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.formula-section { display: grid; gap: 14px; }
+.section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.formula-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.formula-card { min-width: 0; padding: 20px; }
+.formula-card h3 { margin-bottom: 14px; font-size: 13px; font-weight: 600; }
+.equation-box { min-height: 54px; padding: 12px 10px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--pink-border); border-radius: 11px; background: var(--pink-tint); color: var(--pink-dark); font-family: var(--number-font); font-size: 15px; font-weight: 600; text-align: center; }
+.equation-long { font-size: 12px; }
+.formula-divider { height: 1px; margin: 16px 0 12px; background: var(--pink-soft); }
+.formula-label { margin-bottom: 4px; color: var(--pink-muted); font-size: 10px; font-weight: 600; text-transform: uppercase; }
+.calculation { overflow-wrap: anywhere; font-family: var(--number-font); font-size: 11px; line-height: 1.8; }
+.calculation.strong { font-weight: 700; }
+.formula-note { color: var(--pink-muted); font-size: 12px; text-align: center; }
+.plot-panel { overflow: hidden; }
+.plot-heading { padding: 18px 20px; display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; border-bottom: 1px solid var(--pink-soft); }
+.plot-title-group { min-width: 230px; }
+.plot-title-group .heading-copy { gap: 9px; flex-wrap: wrap; }
+.plot-subtitle { margin-top: 6px; color: var(--pink-muted); font-size: 11px; }
+.plot-model { font-size: 10px; }
+.plot-controls { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
+.toggle-button { min-height: 32px; padding: 5px 10px; border: 1px solid var(--pink-border); border-radius: 8px; background: var(--white); color: var(--pink-dark); font-size: 10px; cursor: pointer; white-space: nowrap; }
+.toggle-button:hover, .toggle-button.active { background: var(--pink-soft); }
+.toggle-button.active { border-color: var(--pink-mid); }
+.line-key { color: var(--pink-line); } .dash-key { color: var(--pink-residual); } .dot-key { color: var(--pink); }
+.chart-wrap { width: min(100% - 40px, 700px); margin: 20px auto 8px; overflow-x: auto; overflow-y: hidden; border: 1px solid var(--pink-border); border-radius: 12px; background: var(--white); }
+.chart-svg { display: block; width: 700px; height: 420px; overflow: visible; }
+.plot-background { fill: var(--white); }
+.grid-line { stroke: var(--pink-soft); stroke-width: 1; stroke-dasharray: 3 4; }
+.axis-line { stroke: var(--pink); stroke-width: 1.4; }
+.tick-label { fill: var(--pink-muted); font-family: var(--number-font); font-size: 9px; }
+.axis-title { fill: var(--pink-dark); font-family: var(--text-font); font-size: 11px; font-weight: 600; }
+.regression-line { stroke: var(--pink-line); stroke-width: 2.5; }
+.residual-line { stroke: var(--pink-residual); stroke-width: 1.4; stroke-dasharray: 4 4; }
+.mean-guide { stroke: var(--pink-mid); stroke-width: 1; stroke-dasharray: 3 4; }
+.centroid-ring { fill: var(--white); fill-opacity: .55; stroke: var(--pink-line); stroke-width: 1.5; stroke-dasharray: 3 3; }
+.centroid-dot { fill: var(--pink-line); stroke: var(--white); stroke-width: 1.5; }
+.data-point { fill: var(--pink); stroke: var(--white); stroke-width: 2; cursor: crosshair; }
+.chart-svg:not(.add-mode) .data-point { cursor: help; }
+.empty-chart-text { fill: var(--pink-muted); font-family: var(--text-font); font-size: 12px; }
+.click-layer { fill: transparent; cursor: crosshair; }
+.plot-tooltip rect { fill: var(--pink-dark); stroke: var(--pink-border); stroke-width: 1; }
+.plot-tooltip text { fill: var(--white); font-family: var(--number-font); font-size: 9px; }
+.plot-legend { padding: 8px 18px 18px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 20px; color: var(--pink-muted); font-size: 10px; }
+.plot-legend span { display: inline-flex; align-items: center; gap: 7px; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--pink); }
+.legend-line { width: 16px; border-top: 2px solid var(--pink-line); }
+.legend-dash { width: 16px; border-top: 2px dashed var(--pink-residual); }
+.legend-centroid { width: 9px; height: 9px; border: 1px dashed var(--pink-line); border-radius: 50%; }
+.app-footer { padding: 10px 0 4px; border-top: 1px solid var(--pink-border); color: var(--pink-muted); font-size: 10px; text-align: center; }
+@media (max-width: 760px) { .app-shell { width: min(100% - 28px, 1000px); padding-top: 14px; gap: 16px; } .formula-grid { grid-template-columns: 1fr; gap: 12px; } .formula-card { padding: 17px; } .plot-heading { flex-direction: column; } .plot-title-group { min-width: 0; } .plot-controls { justify-content: flex-start; } }
+@media (max-width: 480px) { .app-header { padding: 14px; } .brand-lockup, .heading-copy { gap: 10px; } .brand-icon { width: 42px; height: 42px; flex-basis: 42px; } h1 { font-size: 17px; } .brand-lockup p { font-size: 11px; } .add-placeholder { padding: 8px 12px; } .section-heading { align-items: flex-start; flex-direction: column; } .plot-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; } .toggle-button { white-space: normal; } .chart-wrap { width: calc(100% - 24px); margin-top: 12px; } .plot-legend { justify-content: flex-start; padding-inline: 12px; } }

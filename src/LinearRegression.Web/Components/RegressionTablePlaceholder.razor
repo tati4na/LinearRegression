@@ -1,0 +1,22 @@
+@using LinearRegression.Web.Models
+
+<!-- Regression table section -->
+<section class="panel table-panel" aria-labelledby="table-title">
+    <div class="panel-heading">
+        <div class="heading-copy">
+            <h2 id="table-title">Linear Regression Table</h2>
+            <span class="count-badge">@Points.Count records</span>
+        </div>
+    </div>
+    <div class="placeholder-box">
+        <svg class="placeholder-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3.5" y="4.5" width="17" height="15" rx="2"></rect>
+            <path d="M3.5 9.5h17M9 9.5v10M15 9.5v10"></path>
+        </svg>
+        <p>Regression Table placeholder (Alisin mo nalang toh Alexis)</p>
+    </div>
+</section>
+
+@code {
+    [Parameter, EditorRequired] public IReadOnlyList<DataPoint> Points { get; set; } = [];
+}
