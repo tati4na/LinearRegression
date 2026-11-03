@@ -92,7 +92,11 @@ body { margin: 0; background: var(--page); color: var(--pink-dark); font-size: 1
 h1, h2, h3, p { margin: 0; }
 h1 { color: var(--pink-dark); font-size: 20px; font-weight: 700; line-height: 1.25; }
 .brand-lockup p { margin-top: 4px; color: var(--pink-muted); font-size: 12px; }
-.add-placeholder { border: 0; border-radius: 999px; background: var(--pink); color: var(--white); padding: 9px 18px; font-weight: 600; opacity: .58; cursor: not-allowed; }
+.header-actions { display: flex; align-items: center; gap: 10px; }
+.add-placeholder, .export-pdf-button { min-height: 38px; padding: 9px 18px; border: 1px solid var(--pink); border-radius: 999px; background: var(--pink); color: var(--white); font: inherit; font-weight: 600; cursor: pointer; }
+.add-placeholder:hover, .export-pdf-button:hover { border-color: var(--pink-dark); background: var(--pink-dark); }
+.export-pdf-button { border-color: var(--pink-border); background: var(--white); color: var(--pink-dark); }
+.export-pdf-button:hover { border-color: var(--pink-mid); background: var(--pink-soft); }
 .table-panel { overflow: hidden; }
 .panel-heading { min-height: 58px; padding: 15px 20px; border-bottom: 1px solid var(--pink-soft); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .panel-heading h2, .section-heading h2, .plot-heading h2 { font-size: 16px; font-weight: 700; }
@@ -127,8 +131,49 @@ h1 { color: var(--pink-dark); font-size: 20px; font-weight: 700; line-height: 1.
 .add-values-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .add-values-header h2 { font-size: 18px; font-weight: 700; }
 .modal-close-button { width: 34px; height: 34px; padding: 8px; display: grid; place-items: center; border: 1px solid var(--pink-border); border-radius: 9px; background: var(--white); color: var(--pink-dark); cursor: pointer; }
-.modal-close-button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.modal-close-button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .modal-close-button:hover { background: var(--pink-soft); }
+.csv-helper-modal { width: min(100%, 640px); max-height: calc(100vh - 40px); padding: 0; display: flex; flex-direction: column; overflow: hidden; }
+.csv-helper-header { padding: 28px 32px 24px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+.csv-helper-header h2 { color: var(--pink-dark); font-family: var(--text-font); font-size: 22px; font-weight: 700; line-height: 1.25; }
+.csv-helper-description { margin-top: 8px; color: var(--pink-muted); font-size: 13px; line-height: 1.6; }
+.csv-helper-content { min-height: 0; padding: 4px 32px 28px; display: grid; align-content: start; gap: 22px; overflow-y: auto; }
+.csv-helper-tabs { position: relative; padding: 4px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: 1px solid var(--pink-border); border-radius: 999px; background: var(--pink-tint); }
+.csv-helper-tab-pill { position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px); border-radius: 999px; background: var(--white); box-shadow: 0 2px 8px rgb(131 24 67 / 14%); transition: transform .25s cubic-bezier(.4, 0, .2, 1); }
+.csv-helper-tabs.paste-active .csv-helper-tab-pill { transform: translateX(100%); }
+.csv-helper-tab { position: relative; z-index: 1; min-height: 40px; padding: 8px 14px; border: 0; border-radius: 999px; background: transparent; color: var(--pink-muted); font: inherit; font-size: 13px; font-weight: 400; cursor: pointer; transition: color .2s; }
+.csv-helper-tab:hover { color: var(--pink-dark); }
+.csv-helper-tab.active { color: var(--pink-dark); font-weight: 700; }
+.csv-helper-tab:focus-visible, .modal-close-button:focus-visible, .csv-cancel-button:focus-visible { outline: 2px solid var(--pink-mid); outline-offset: 2px; }
+.csv-helper-tab-panel { min-height: 240px; display: grid; }
+.csv-drop-zone { position: relative; min-height: 240px; padding: 40px 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border: 2px dashed var(--pink-border); border-radius: 16px; background: #fffafd; text-align: center; transition: border-color .15s, background .15s; }
+.csv-drop-zone:hover, .csv-drop-zone:focus-within, .csv-drop-zone.dragging { border-color: var(--pink); background: var(--pink-tint); }
+.csv-drop-zone.has-file { border-style: solid; border-color: var(--pink-mid); }
+.csv-upload-icon-box { width: 56px; height: 56px; margin-bottom: 10px; display: grid; place-items: center; border: 1px solid var(--pink-border); border-radius: 14px; background: var(--white); box-shadow: 0 2px 6px rgb(131 24 67 / 8%); }
+.csv-upload-icon-box svg { width: 26px; height: 26px; fill: none; stroke: var(--pink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.csv-drop-zone strong { max-width: 100%; color: var(--pink-dark); font-size: 15px; font-weight: 700; overflow-wrap: anywhere; }
+.csv-drop-subtext { max-width: 420px; color: var(--pink-muted); font-size: 12px; line-height: 1.6; }
+.csv-drop-zone > :not(.csv-file-input) { pointer-events: none; }
+.csv-file-input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.csv-paste-field { display: grid; gap: 10px; color: var(--pink-dark); font-size: 11px; font-weight: 700; letter-spacing: .05em; }
+.csv-paste-field textarea { width: 100%; min-height: 240px; padding: 16px; resize: both; border: 1px solid var(--pink-border); border-radius: 12px; background: var(--white); color: var(--pink-dark); font: 13px/1.7 var(--number-font); letter-spacing: 0; }
+.csv-paste-field textarea:focus { border-color: var(--pink); outline: 0; box-shadow: 0 0 0 3px rgb(219 39 119 / 12%); }
+.csv-helper-content .add-values-error { margin: -8px 0 0; }
+.csv-helper-footer { padding: 20px 32px; display: flex; align-items: center; justify-content: flex-end; gap: 12px; border-top: 1px solid var(--pink-soft); }
+.csv-clear-button { margin-right: auto; padding: 9px 12px; border: 1px solid var(--pink-border); border-radius: 9px; background: var(--white); color: #b42318; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; }
+.csv-clear-button:hover:not(:disabled) { border-color: #b42318; background: #fff5f5; }
+.csv-clear-button:disabled { opacity: .5; cursor: not-allowed; }
+.csv-clear-confirmation { padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border: 1px solid var(--pink-border); border-radius: 12px; background: #fffafd; }
+.csv-clear-confirmation h3 { color: var(--pink-dark); font-size: 13px; font-weight: 700; }
+.csv-clear-confirmation p { margin-top: 4px; color: var(--pink-muted); font-size: 11px; line-height: 1.5; }
+.csv-clear-actions { display: flex; flex: 0 0 auto; align-items: center; gap: 6px; }
+.csv-clear-confirm-button { padding: 8px 10px; border: 1px solid #b42318; border-radius: 8px; background: #b42318; color: var(--white); font: inherit; font-size: 11px; font-weight: 600; cursor: pointer; }
+.csv-clear-confirm-button:hover { border-color: #8f1d14; background: #8f1d14; }
+.csv-cancel-button { padding: 10px 14px; border: 0; border-radius: 9px; background: transparent; color: var(--pink-muted); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.csv-cancel-button:hover { background: var(--pink-tint); color: var(--pink-dark); }
+.csv-import-button { min-height: 42px; padding: 9px 18px; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; }
+.csv-import-button svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.modal-primary-button.csv-import-button:disabled { border-color: var(--pink-border); background: var(--pink-soft); color: var(--pink-muted); opacity: .75; cursor: not-allowed; }
 .add-values-form { margin-top: 24px; }
 .add-values-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .value-field { min-width: 0; display: grid; gap: 7px; color: var(--pink-dark); font-size: 12px; font-weight: 600; }
@@ -156,6 +201,19 @@ h1 { color: var(--pink-dark); font-size: 20px; font-weight: 700; line-height: 1.
 .formula-label { margin-bottom: 4px; color: var(--pink-muted); font-size: 10px; font-weight: 600; text-transform: uppercase; }
 .calculation { overflow-wrap: anywhere; font-family: var(--number-font); font-size: 11px; line-height: 1.8; }
 .calculation.strong { font-weight: 700; }
+.formula-hint { margin-top: -6px; color: var(--pink-muted); font-size: 11px; }
+.formula-hover { position: relative; border-radius: 11px; cursor: help; }
+.formula-hover:focus-visible { outline: 2px solid var(--pink-mid); outline-offset: 3px; }
+.formula-tooltip { position: absolute; top: calc(100% + 8px); z-index: 50; width: min(380px, calc(100vw - 32px)); max-height: 60vh; padding: 14px 16px; overflow-y: auto; display: none; border: 1px solid var(--pink-mid); border-radius: 12px; background: var(--white); box-shadow: 0 16px 40px rgb(131 24 67 / 20%); color: var(--pink-dark); text-align: left; cursor: default; }
+.formula-hover:hover > .formula-tooltip, .formula-hover:focus > .formula-tooltip, .formula-hover:focus-within > .formula-tooltip { display: block; }
+.formula-tooltip.align-start { left: 0; }
+.formula-tooltip.align-center { left: 50%; transform: translateX(-50%); }
+.formula-tooltip.align-end { right: 0; }
+.tip-title { margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--pink-soft); font-size: 12px; font-weight: 700; }
+.tip-step { margin-top: 6px; font-size: 11px; line-height: 1.6; }
+.tip-term { margin-top: 2px; padding-left: 10px; color: var(--pink-muted); font: 10px/1.6 var(--number-font); overflow-wrap: anywhere; }
+.tip-result { margin-top: 8px; padding: 8px 10px; border-radius: 8px; background: var(--pink-tint); font-size: 11px; font-weight: 700; overflow-wrap: anywhere; }
+.formula-tooltip code { font-family: var(--number-font); font-size: 11px; font-weight: 700; }
 .formula-note { color: var(--pink-muted); font-size: 12px; text-align: center; }
 .plot-panel { overflow: hidden; }
 .plot-heading { padding: 18px 20px; display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; border-bottom: 1px solid var(--pink-soft); }
@@ -192,7 +250,64 @@ h1 { color: var(--pink-dark); font-size: 20px; font-weight: 700; line-height: 1.
 .legend-line { width: 16px; border-top: 2px solid var(--pink-line); }
 .legend-dash { width: 16px; border-top: 2px dashed var(--pink-residual); }
 .legend-centroid { width: 9px; height: 9px; border: 1px dashed var(--pink-line); border-radius: 50%; }
+.histogram-bar { fill: var(--pink-soft); stroke: var(--pink-mid); stroke-width: 1; }
+.histogram-bar:hover { fill: var(--pink-border); }
+.normal-curve { fill: none; stroke: var(--pink-line); stroke-width: 2.5; stroke-linejoin: round; }
+.legend-bar { width: 10px; height: 10px; border: 1px solid var(--pink-mid); border-radius: 2px; background: var(--pink-soft); }
+.distribution-panel .chart-svg { height: 380px; }
+.chart-hover-tooltip { position: static; width: 250px; height: 190px; max-height: 190px; box-sizing: border-box; padding: 10px 12px; display: block; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; box-shadow: 0 8px 22px rgb(131 24 67 / 20%); cursor: default; pointer-events: auto; }
+.chart-hover-tooltip .tip-title { font-size: 11px; }
+.chart-hover-tooltip .tip-step { font-size: 10px; }
+.chart-hover-tooltip .tip-term { padding-left: 4px; font-size: 9px; }
+.histogram-bar { cursor: help; }
+.histogram-bar:focus-visible { outline: none; stroke: var(--pink-dark); stroke-width: 2; }
+.plot-info-button { flex: 0 0 auto; width: 34px; height: 34px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--pink-border); border-radius: 50%; background: var(--white); color: var(--pink-mid); cursor: pointer; transition: background .2s, border-color .2s, color .2s, box-shadow .2s; }
+.plot-info-button:hover { border-color: var(--pink-mid); background: var(--pink-tint); color: var(--pink-dark); box-shadow: 0 2px 8px rgb(131 24 67 / 14%); }
+.plot-info-button:focus-visible { outline: 2px solid var(--pink-mid); outline-offset: 2px; }
+.plot-info-button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.distribution-details-modal { width: min(100%, 760px); max-height: calc(100vh - 40px); padding: 0; display: flex; flex-direction: column; overflow: hidden; }
+.distribution-details-content { gap: 26px; }
+.details-section { display: grid; gap: 12px; }
+.details-section h3 { color: var(--pink-dark); font-size: 14px; font-weight: 700; }
+.details-table-wrap { max-height: 240px; overflow: auto; border: 1px solid var(--pink-border); border-radius: 12px; }
+.details-table { width: 100%; border-collapse: collapse; font-family: var(--number-font); font-size: 12px; }
+.details-table th { position: sticky; top: 0; padding: 10px 14px; background: var(--pink-tint); color: var(--pink-dark); font-family: var(--text-font); font-size: 11px; font-weight: 700; text-align: center; border-bottom: 1px solid var(--pink-border); }
+.details-table td { padding: 8px 14px; color: var(--pink-dark); text-align: center; border-bottom: 1px solid var(--pink-soft); }
+.details-table tr:last-child td { border-bottom: 0; }
+.calc-grid { display: grid; gap: 16px; }
+.calc-block { min-width: 0; padding: 18px 20px; display: grid; gap: 10px; border: 1px solid var(--pink-soft); border-radius: 12px; background: var(--white); }
+.calc-block h4 { color: var(--pink-dark); font-size: 13px; font-weight: 700; }
+.calc-block .equation-box { min-height: 44px; font-size: 14px; }
+.calc-block .calculation { color: var(--pink-dark); overflow-wrap: anywhere; }
 .app-footer { padding: 10px 0 4px; border-top: 1px solid var(--pink-border); color: var(--pink-muted); font-size: 10px; text-align: center; }
+.print-only { display: none; }
 @media (max-width: 760px) { .app-shell { width: min(100% - 28px, 1000px); padding-top: 14px; gap: 16px; } .formula-grid { grid-template-columns: 1fr; gap: 12px; } .formula-card { padding: 17px; } .plot-heading { flex-direction: column; } .plot-title-group { min-width: 0; } .plot-controls { justify-content: flex-start; } }
-@media (max-width: 560px) { .panel-heading { align-items: flex-start; flex-direction: column; } .table-heading-actions { width: 100%; justify-content: space-between; gap: 8px; } .table-add-button { padding-inline: 10px; font-size: 11px; } }
-@media (max-width: 480px) { .app-header { padding: 14px; } .brand-lockup, .heading-copy { gap: 10px; } .brand-icon { width: 42px; height: 42px; flex-basis: 42px; } h1 { font-size: 17px; } .brand-lockup p { font-size: 11px; } .panel-heading { padding: 13px 14px; } .table-add-button { padding: 7px 9px; font-size: 10px; } .decimal-tab { min-width: 28px; padding-inline: 6px; } .add-values-modal { padding: 18px; } .add-values-fields { gap: 10px; } .add-values-actions { gap: 7px; } .modal-secondary-button, .modal-primary-button { padding-inline: 10px; font-size: 11px; } .section-heading { align-items: flex-start; flex-direction: column; } .plot-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; } .toggle-button { white-space: normal; } .chart-wrap { width: calc(100% - 24px); margin-top: 12px; } .plot-legend { justify-content: flex-start; padding-inline: 12px; } }
+@media (max-width: 560px) { .app-header { align-items: flex-start; flex-direction: column; } .header-actions { align-self: flex-end; } .panel-heading { align-items: flex-start; flex-direction: column; } .table-heading-actions { width: 100%; justify-content: space-between; gap: 8px; } .table-add-button { padding-inline: 10px; font-size: 11px; } }
+@media (max-width: 480px) { .app-header { padding: 14px; } .brand-lockup, .heading-copy { gap: 10px; } .brand-icon { width: 42px; height: 42px; flex-basis: 42px; } h1 { font-size: 17px; } .brand-lockup p { font-size: 11px; } .panel-heading { padding: 13px 14px; } .table-add-button { padding: 7px 9px; font-size: 10px; } .decimal-tab { min-width: 28px; padding-inline: 6px; } .add-values-modal { padding: 18px; } .csv-helper-modal { padding: 0; } .csv-helper-footer { padding: 14px 16px; } .csv-helper-header { padding: 20px 18px 16px; gap: 12px; } .csv-helper-header h2 { font-size: 19px; } .csv-helper-content { padding: 2px 18px 20px; gap: 16px; } .csv-helper-tab { padding-inline: 8px; font-size: 12px; } .csv-drop-zone, .csv-helper-tab-panel, .csv-paste-field textarea { min-height: 200px; } .csv-drop-zone { padding: 24px 16px; } .add-values-fields { gap: 10px; } .add-values-actions { gap: 7px; } .modal-secondary-button, .modal-primary-button { padding-inline: 10px; font-size: 11px; } .section-heading { align-items: flex-start; flex-direction: column; } .plot-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; } .toggle-button { white-space: normal; } .chart-wrap { width: calc(100% - 24px); margin-top: 12px; } .plot-legend { justify-content: flex-start; padding-inline: 12px; } }
+
+@media print {
+    @page { size: portrait; margin: 8mm; }
+    html, body { min-height: 0; background: var(--page); color: var(--pink-dark); }
+    body { font-size: 10pt; }
+    .app-shell { width: 100%; max-width: none; margin: 0 auto; padding: 0; gap: 8px; }
+    .panel, .formula-card { border: 1px solid var(--pink-border); border-radius: 14px; background: var(--white); box-shadow: var(--shadow); }
+    .app-header { min-height: 0; padding: 12px 18px; }
+    .no-print, .table-panel:not(.print-data), .plot-controls { display: none !important; }
+    .print-only { display: block !important; }
+    .print-data { overflow: visible; break-inside: auto; }
+    .print-data .panel-heading { min-height: 0; padding: 12px 16px; }
+    .print-data .regression-table-scroll { overflow: visible; }
+    .print-data .regression-table { font-size: 8pt; }
+    .print-data .regression-table th, .print-data .regression-table td { padding: 5px 6px; overflow-wrap: anywhere; }
+    .print-data .regression-table thead { display: table-header-group; }
+    .print-data .regression-table tr { break-inside: avoid; }
+    .formula-section, .formula-tooltip { display: none !important; }
+    .plot-panel { overflow: visible; break-inside: avoid; }
+    .distribution-panel .chart-svg { height: auto; }
+    .plot-heading { padding: 8px 12px; }
+    .plot-tooltip, .click-layer { display: none; }
+    .chart-wrap { width: min(100%, 700px); margin: 6px auto 2px; overflow: visible; border: 1px solid var(--pink-border); }
+    .chart-svg { width: 100%; height: auto; }
+    .plot-legend { padding: 5px 10px 8px; gap: 6px 12px; }
+    * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
