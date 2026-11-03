@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\LinearRegression\\src\\LinearRegression.Core\\LinearRegression.Core.csproj": {}
+    "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\src\\LinearRegression.Core\\LinearRegression.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\LinearRegression\\src\\LinearRegression.Core\\LinearRegression.Core.csproj": {
+    "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\src\\LinearRegression.Core\\LinearRegression.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\LinearRegression\\src\\LinearRegression.Core\\LinearRegression.Core.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\src\\LinearRegression.Core\\LinearRegression.Core.csproj",
         "projectName": "LinearRegression.Core",
-        "projectPath": "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\LinearRegression\\src\\LinearRegression.Core\\LinearRegression.Core.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\src\\LinearRegression.Core\\LinearRegression.Core.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\LinearRegression\\src\\LinearRegression.Core\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\src\\LinearRegression.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
