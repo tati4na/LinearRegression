@@ -196,6 +196,7 @@ h1 { color: var(--pink-dark); font-size: 20px; font-weight: 700; line-height: 1.
 .formula-card { min-width: 0; padding: 20px; }
 .formula-card h3 { margin-bottom: 14px; font-size: 13px; font-weight: 600; }
 .equation-box { min-height: 54px; padding: 12px 10px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--pink-border); border-radius: 11px; background: var(--pink-tint); color: var(--pink-dark); font-family: var(--number-font); font-size: 15px; font-weight: 600; text-align: center; }
+.math-xbar { text-decoration: overline; text-decoration-thickness: 1px; text-decoration-skip-ink: none; }
 .equation-long { font-size: 12px; }
 .formula-divider { height: 1px; margin: 16px 0 12px; background: var(--pink-soft); }
 .formula-label { margin-bottom: 4px; color: var(--pink-muted); font-size: 10px; font-weight: 600; text-transform: uppercase; }

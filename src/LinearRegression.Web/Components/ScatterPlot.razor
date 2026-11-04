@@ -88,7 +88,17 @@
             }
             @if (AddMode)
             {
-                <rect x="@Left" y="@Top" width="@PlotWidth" height="@PlotHeight" class="click-layer" @onclick="HandlePlotClick"></rect>
+                <rect x="@Left" y="@Top" width="@PlotWidth" height="@PlotHeight" class="click-layer" @onclick="HandlePlotClick" @onmousemove="HandlePlotHover" @onmouseleave="ClearPlotHover"></rect>
+                @if (HoveredPlotX is double plotX && HoveredPlotY is double plotY)
+                {
+                    var previewX = Math.Clamp(ScaleX(plotX) + 12, Left, Right - PreviewTooltipWidth);
+                    var previewY = Math.Clamp(ScaleY(plotY) - 42, Top, Bottom - PreviewTooltipHeight);
+                    <g class="plot-tooltip plot-preview-tooltip" transform="translate(@Svg(previewX) @Svg(previewY))" pointer-events="none">
+                        <rect width="@PreviewTooltipWidth" height="@PreviewTooltipHeight" rx="8"></rect>
+                        <text x="12" y="20">x: @Format(plotX)</text>
+                        <text x="12" y="37">y: @Format(plotY)</text>
+                    </g>
+                }
             }
         </svg>
     </div>
@@ -114,6 +124,8 @@
     private const double BottomMargin = 60;
     private const double TooltipWidth = 180;
     private const double TooltipHeight = 82;
+    private const double PreviewTooltipWidth = 120;
+    private const double PreviewTooltipHeight = 48;
     private const double PlotWidth = SvgWidth - Left - RightMargin;
     private const double PlotHeight = SvgHeight - Top - BottomMargin;
     private bool ShowLine { get; set; } = true;
@@ -121,6 +133,8 @@
     private bool ShowMean { get; set; } = true;
     private bool AddMode { get; set; }
     private int? HoveredId { get; set; }
+    private double? HoveredPlotX { get; set; }
+    private double? HoveredPlotY { get; set; }
 
     private double MinX => Domain(Points.Select(point => point.X)).Min;
     private double MaxX => Domain(Points.Select(point => point.X)).Max;
@@ -175,5 +189,19 @@
         var y = Math.Round(InvertY(Math.Clamp(svgY, Top, Bottom)), 2);
         var id = Points.Select(point => point.Id).DefaultIfEmpty(0).Max() + 1;
         await OnPointAdded.InvokeAsync(new DataPoint(id, x, y));
+    }
+
+    private void HandlePlotHover(MouseEventArgs args)
+    {
+        var svgX = Left + args.OffsetX;
+        var svgY = Top + args.OffsetY;
+        HoveredPlotX = Math.Round(InvertX(Math.Clamp(svgX, Left, Right)), 2);
+        HoveredPlotY = Math.Round(InvertY(Math.Clamp(svgY, Top, Bottom)), 2);
+    }
+
+    private void ClearPlotHover()
+    {
+        HoveredPlotX = null;
+        HoveredPlotY = null;
     }
 }

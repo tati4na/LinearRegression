@@ -22,7 +22,7 @@
                     <p class="tip-result"><code>y = @Value(Result.A) + @Value(Result.B)X</code></p>
                     @if (Result.IsValid)
                     {
-                        <p class="tip-step">Check: at x = x̄ = @Value(Result.MeanX), ŷ = @Value(Result.A) + @Value(Result.B) × @Value(Result.MeanX) = <code>@Value(Result.A + Result.B * Result.MeanX)</code> = ȳ</p>
+                        <p class="tip-step">Check: at x = <span class="math-xbar">x</span> = @Value(Result.MeanX), ŷ = @Value(Result.A) + @Value(Result.B) × @Value(Result.MeanX) = <code>@Value(Result.A + Result.B * Result.MeanX)</code> = ȳ</p>
                     }
                 </div>
             </div>
@@ -45,7 +45,7 @@
         <article class="formula-card">
             <h3>b Value Equation</h3>
             <div class="formula-hover" tabindex="0">
-                <div class="equation-box equation-long">b = Σ(x - x̄)(y - ȳ) / Σ(x - x̄)²</div>
+                <div class="equation-box equation-long">b = Σ(x - <span class="math-xbar">x</span>)(y - ȳ) / Σ(x - <span class="math-xbar">x</span>)²</div>
                 <div class="formula-tooltip align-center" role="tooltip">
                     @SlopeSteps()
                 </div>
@@ -63,7 +63,7 @@
         <article class="formula-card">
             <h3>a Value Equation</h3>
             <div class="formula-hover" tabindex="0">
-                <div class="equation-box">a = ȳ - bx̄</div>
+                <div class="equation-box">a = ȳ - b<span class="math-xbar">x</span></div>
                 <div class="formula-tooltip align-end" role="tooltip">
                     @InterceptSteps()
                 </div>
@@ -104,7 +104,7 @@
     private string Signed(double value) => value < 0 ? $"({Num(value)})" : Num(value);
 
     private RenderFragment SlopeSteps() => @<text>
-        <p class="tip-title">Slope: b = Σ(x - x̄)(y - ȳ) / Σ(x - x̄)²</p>
+        <p class="tip-title">Slope: b = Σ(x - <span class="math-xbar">x</span>)(y - ȳ) / Σ(x - <span class="math-xbar">x</span>)²</p>
         @if (!Result.IsValid || Points.Count == 0)
         {
             <p class="tip-step">Add at least 2 points with different x values to see the computation.</p>
@@ -117,9 +117,9 @@
             var listed = Points.Take(MaxListedTerms).ToList();
             var hidden = n - listed.Count;
             <p class="tip-step"><strong>Step 1 — Means</strong></p>
-            <p class="tip-step">x̄ = Σx / n = @Num(sumX) / @n = <code>@Num(Result.MeanX)</code></p>
+            <p class="tip-step"><span class="math-xbar">x</span> = Σx / n = @Num(sumX) / @n = <code>@Num(Result.MeanX)</code></p>
             <p class="tip-step">ȳ = Σy / n = @Num(sumY) / @n = <code>@Num(Result.MeanY)</code></p>
-            <p class="tip-step"><strong>Step 2 — Σ(x - x̄)(y - ȳ)</strong></p>
+            <p class="tip-step"><strong>Step 2 — Σ(x - <span class="math-xbar">x</span>)(y - ȳ)</strong></p>
             @foreach (var point in listed)
             {
                 <p class="tip-term">(@Num(point.X) - @Num(Result.MeanX))(@Num(point.Y) - @Num(Result.MeanY)) = @Num((point.X - Result.MeanX) * (point.Y - Result.MeanY))</p>
@@ -128,8 +128,8 @@
             {
                 <p class="tip-term">… and @hidden more @(hidden == 1 ? "row" : "rows")</p>
             }
-            <p class="tip-step">Σ(x - x̄)(y - ȳ) = <code>@Num(Result.SumXY)</code></p>
-            <p class="tip-step"><strong>Step 3 — Σ(x - x̄)²</strong></p>
+            <p class="tip-step">Σ(x - <span class="math-xbar">x</span>)(y - ȳ) = <code>@Num(Result.SumXY)</code></p>
+            <p class="tip-step"><strong>Step 3 — Σ(x - <span class="math-xbar">x</span>)²</strong></p>
             @foreach (var point in listed)
             {
                 <p class="tip-term">(@Num(point.X) - @Num(Result.MeanX))² = @Num((point.X - Result.MeanX) * (point.X - Result.MeanX))</p>
@@ -138,25 +138,25 @@
             {
                 <p class="tip-term">… and @hidden more @(hidden == 1 ? "row" : "rows")</p>
             }
-            <p class="tip-step">Σ(x - x̄)² = <code>@Num(Result.SumXX)</code></p>
+            <p class="tip-step">Σ(x - <span class="math-xbar">x</span>)² = <code>@Num(Result.SumXX)</code></p>
             <p class="tip-step"><strong>Step 4 — Divide</strong></p>
             <p class="tip-result"><code>b = @Num(Result.SumXY) / @Num(Result.SumXX) = @Num(Result.B)</code></p>
         }
     </text>;
 
     private RenderFragment InterceptSteps() => @<text>
-        <p class="tip-title">Intercept: a = ȳ - b x̄</p>
+        <p class="tip-title">Intercept: a = ȳ - b <span class="math-xbar">x</span></p>
         @if (!Result.IsValid)
         {
             <p class="tip-step">Add at least 2 points with different x values to see the computation.</p>
         }
         else
         {
-            <p class="tip-step">The line always passes through the mean point (x̄, ȳ), so a is where it crosses x = 0.</p>
+            <p class="tip-step">The line always passes through the mean point (<span class="math-xbar">x</span>, ȳ), so a is where it crosses x = 0.</p>
             <p class="tip-step"><strong>Step 1 — Inputs</strong></p>
-            <p class="tip-step">ȳ = @Num(Result.MeanY), &nbsp;x̄ = @Num(Result.MeanX), &nbsp;b = @Num(Result.B)</p>
-            <p class="tip-step"><strong>Step 2 — Multiply b by x̄</strong></p>
-            <p class="tip-term">b · x̄ = @Signed(Result.B) × @Signed(Result.MeanX) = @Num(Result.B * Result.MeanX)</p>
+            <p class="tip-step">ȳ = @Num(Result.MeanY), &nbsp;<span class="math-xbar">x</span> = @Num(Result.MeanX), &nbsp;b = @Num(Result.B)</p>
+            <p class="tip-step"><strong>Step 2 — Multiply b by <span class="math-xbar">x</span></strong></p>
+            <p class="tip-term">b · <span class="math-xbar">x</span> = @Signed(Result.B) × @Signed(Result.MeanX) = @Num(Result.B * Result.MeanX)</p>
             <p class="tip-step"><strong>Step 3 — Subtract from ȳ</strong></p>
             <p class="tip-result"><code>a = @Num(Result.MeanY) - @Signed(Result.B * Result.MeanX) = @Num(Result.A)</code></p>
         }

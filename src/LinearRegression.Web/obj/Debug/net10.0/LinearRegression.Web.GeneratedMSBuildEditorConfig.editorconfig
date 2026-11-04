@@ -35,6 +35,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xCYXJlTGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/User/Desktop/Programming/LinearRegression/src/LinearRegression.Web/Components/CsvHelper.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDc3ZIZWxwZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/User/Desktop/Programming/LinearRegression/src/LinearRegression.Web/Components/FormulaCards.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xGb3JtdWxhQ2FyZHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -61,6 +65,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/User/Desktop/Programming/LinearRegression/src/LinearRegression.Web/Components/RegressionTablePlaceholder.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSZWdyZXNzaW9uVGFibGVQbGFjZWhvbGRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/Programming/LinearRegression/src/LinearRegression.Web/Components/ResidualDistribution.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSZXNpZHVhbERpc3RyaWJ1dGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/User/Desktop/Programming/LinearRegression/src/LinearRegression.Web/Components/Routes.razor]
