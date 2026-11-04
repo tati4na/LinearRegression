@@ -32,7 +32,7 @@ public static class CsvDataParser
 			}
 
 			var fields = line.Split(delimiter);
-			if (firstRecord && IsXyHeader(fields))
+			if (firstRecord && IsHeader(fields))
 			{
 				firstRecord = false;
 				continue;
@@ -67,10 +67,11 @@ public static class CsvDataParser
 		return tabs > commas ? '\t' : ',';
 	}
 
-	private static bool IsXyHeader(string[] fields) =>
+	private static bool IsHeader(string[] fields) =>
 		fields.Length >= 2 &&
-		NormalizeField(fields[0]).Equals("x", StringComparison.OrdinalIgnoreCase) &&
-		NormalizeField(fields[1]).Equals("y", StringComparison.OrdinalIgnoreCase);
+		((NormalizeField(fields[0]).Equals("x", StringComparison.OrdinalIgnoreCase) &&
+			NormalizeField(fields[1]).Equals("y", StringComparison.OrdinalIgnoreCase)) ||
+			(!TryParseCoordinate(fields[0], out _) && !TryParseCoordinate(fields[1], out _)));
 
 	private static bool TryParseCoordinate(string field, out double value) =>
 		double.TryParse(
