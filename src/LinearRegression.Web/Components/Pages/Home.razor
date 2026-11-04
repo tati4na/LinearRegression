@@ -4,6 +4,7 @@
 @using LinearRegression.Web.Models
 @using LinearRegression.Web.Services
 @inject IRegressionEngine RegressionEngine
+@inject IJSRuntime JSRuntime
 
 <PageTitle>Linear Regression Simulator</PageTitle>
 
@@ -21,23 +22,103 @@
 				<p>Simulate linear regression in real-time</p>
 			</div>
 		</div>
-		<button type="button" class="add-placeholder" disabled>＋ <span>Add</span></button>
+		<div class="header-actions no-print">
+			<button type="button" class="export-pdf-button" @onclick="ExportPdf">Export PDF</button>
+			<button type="button" class="add-placeholder" @onclick="() => IsCsvHelperVisible = true">＋ <span>Add</span></button>
+		</div>
 	</header>
 
 	<RegressionTablePlaceholder Points="Points"
 	                            OnPointAdded="AddPoint"
 	                            OnPointUpdated="UpdatePoint"
 	                            OnPointDeleted="RemovePoint" />
-	<FormulaCards Result="Result" Decimals="Decimals" />
+	<section class="panel table-panel print-only print-data">
+		<div class="panel-heading">
+			<div class="heading-copy">
+				<h2>Linear Regression Table</h2>
+				<span class="count-badge">@Points.Count records</span>
+			</div>
+		</div>
+		<div class="regression-table-scroll">
+		<table class="regression-table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">x</th>
+					<th scope="col">y</th>
+					<th scope="col">x - x̄</th>
+					<th scope="col">y - ȳ</th>
+					<th scope="col">(x - x̄) (y - ȳ)</th>
+					<th scope="col">(x - x̄)²</th>
+					<th scope="col">Predicted Y</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var row in PrintTable.Rows.Select((row, index) => (row, index)))
+				{
+					<tr>
+						<td>@(row.index + 1)</td>
+						<td>@PrintFormat(row.row.X)</td>
+						<td>@PrintFormat(row.row.Y)</td>
+						<td>@PrintFormat(row.row.XDeviation)</td>
+						<td>@PrintFormat(row.row.YDeviation)</td>
+						<td>@PrintFormat(row.row.DeviationProduct)</td>
+						<td>@PrintFormat(row.row.SquaredXDeviation)</td>
+						<td>@(row.row.PredictedY is double predictedY ? PrintFormat(predictedY) : null)</td>
+					</tr>
+				}
+			</tbody>
+			<tfoot>
+				<tr>
+					<th>Σ Sum</th>
+					<td>@(Points.Count > 0 ? PrintFormat(PrintTable.SumX) : null)</td>
+					<td>@(Points.Count > 0 ? PrintFormat(PrintTable.SumY) : null)</td>
+					<td>@(Points.Count > 0 ? PrintFormat(PrintTable.SumXDeviation) : null)</td>
+					<td>@(Points.Count > 0 ? PrintFormat(PrintTable.SumYDeviation) : null)</td>
+					<td>@(Points.Count > 0 ? PrintFormat(PrintTable.SumDeviationProduct) : null)</td>
+					<td>@(Points.Count > 0 ? PrintFormat(PrintTable.SumSquaredXDeviation) : null)</td>
+					<td>@(PrintTable.SumPredictedY is double predictedSum ? PrintFormat(predictedSum) : null)</td>
+				</tr>
+				<tr>
+					<th>Mean</th>
+					<td>@(Points.Count > 0 ? PrintFormat(PrintTable.MeanX) : null)</td>
+					<td>@(Points.Count > 0 ? PrintFormat(PrintTable.MeanY) : null)</td>
+					<td colspan="5"></td>
+				</tr>
+			</tfoot>
+		</table>
+		</div>
+	</section>
+	<FormulaCards Result="Result" Points="Points" Decimals="Decimals" />
 	<ScatterPlot Points="Points" Result="Result" Decimals="Decimals" OnPointAdded="AddPoint" />
+	<ResidualDistribution Points="Points" Result="Result" Decimals="Decimals" />
 </main>
 
+<CsvHelper IsVisible="IsCsvHelperVisible"
+           OnClose="CloseCsvHelper"
+           OnImport="ImportPoints"
+           OnClearTable="ClearPoints"
+           PointCount="Points.Count" />
+
 @code {
+	private LinearRegression.Core.Table.RegressionTableResult PrintTable =>
+		LinearRegression.Core.Table.RegressionTable.Calculate(
+			Points.Select(point => new LinearRegression.Core.Table.RegressionTableInput(point.Id, point.X, point.Y)).ToArray());
 	private List<DataPoint> Points { get; set; } = [];
 	private RegressionResult Result { get; set; } = new(0, 0, 0, 0, 0, 0, false, []);
 	private int Decimals { get; set; } = 3;
+	private bool IsCsvHelperVisible { get; set; }
 
 	protected override void OnInitialized() => Recompute();
+
+	private void ImportPoints(IReadOnlyList<(double X, double Y)> coordinates)
+	{
+		var nextId = Points.Select(point => point.Id).DefaultIfEmpty(0).Max() + 1;
+		Points.AddRange(coordinates.Select((coordinate, index) =>
+			new DataPoint(nextId + index, coordinate.X, coordinate.Y)));
+		Recompute();
+		CloseCsvHelper();
+	}
 
 	private void AddPoint(DataPoint point)
 	{
@@ -62,6 +143,18 @@
 		Points.RemoveAll(point => point.Id == id);
 		Recompute();
 	}
+
+	private void ClearPoints()
+	{
+		Points.Clear();
+		Recompute();
+	}
+
+	private void CloseCsvHelper() => IsCsvHelperVisible = false;
+
+	private async Task ExportPdf() => await JSRuntime.InvokeVoidAsync("window.print");
+
+	private static string PrintFormat(double value) => value.ToString("F2", System.Globalization.CultureInfo.InvariantCulture);
 
 	private void Recompute() => Result = RegressionEngine.Compute(Points);
 }

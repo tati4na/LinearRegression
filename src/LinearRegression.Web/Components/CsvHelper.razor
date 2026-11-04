@@ -1,0 +1,225 @@
+@using LinearRegression.Web.Services
+@using Microsoft.AspNetCore.Components.Forms
+
+@if (IsVisible)
+{
+    <div class="add-values-backdrop" @onclick="OnClose">
+        <section class="add-values-modal csv-helper-modal"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="csv-helper-title"
+                 @onclick:stopPropagation>
+            <header class="csv-helper-header">
+                <div>
+                    <h2 id="csv-helper-title">Import CSV Data</h2>
+                    <p class="csv-helper-description">Upload a .csv file or paste comma-separated X and Y coordinates</p>
+                </div>
+                <button type="button" class="modal-close-button" aria-label="Close" @onclick="OnClose">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+                </button>
+            </header>
+
+            <div class="csv-helper-content">
+                @if (IsConfirmingClear)
+                {
+                    <div class="csv-clear-confirmation" role="group" aria-labelledby="csv-clear-title" aria-describedby="csv-clear-description">
+                        <div>
+                            <h3 id="csv-clear-title">Clear all table data?</h3>
+                            <p id="csv-clear-description">This removes all @PointCount data points from the regression table.</p>
+                        </div>
+                        <div class="csv-clear-actions">
+                            <button type="button" class="csv-cancel-button" @onclick="CancelClear">Keep data</button>
+                            <button type="button" class="csv-clear-confirm-button" @onclick="ClearTable">Clear table</button>
+                        </div>
+                    </div>
+                }
+                <div class="csv-helper-tabs @(ActiveTab == InputTab.Paste ? "paste-active" : null)" role="tablist" aria-label="Dataset input method">
+                    <span class="csv-helper-tab-pill" aria-hidden="true"></span>
+                    <button id="upload-csv-tab"
+                            type="button"
+                            role="tab"
+                            class="csv-helper-tab @(ActiveTab == InputTab.Upload ? "active" : null)"
+                            aria-selected="@(ActiveTab == InputTab.Upload)"
+                            aria-controls="csv-helper-panel"
+                            @onclick="() => SelectTab(InputTab.Upload)">
+                        Upload File
+                    </button>
+                    <button id="paste-data-tab"
+                            type="button"
+                            role="tab"
+                            class="csv-helper-tab @(ActiveTab == InputTab.Paste ? "active" : null)"
+                            aria-selected="@(ActiveTab == InputTab.Paste)"
+                            aria-controls="csv-helper-panel"
+                            @onclick="() => SelectTab(InputTab.Paste)">
+                        Paste CSV / Text
+                    </button>
+                </div>
+
+                <div id="csv-helper-panel" class="csv-helper-tab-panel" role="tabpanel"
+                     aria-labelledby="@(ActiveTab == InputTab.Upload ? "upload-csv-tab" : "paste-data-tab")">
+                    @if (ActiveTab == InputTab.Upload)
+                    {
+                        <div class="csv-drop-zone @(IsDragging ? "dragging" : null) @(FileName is null ? null : "has-file")"
+                             @ondragenter="() => IsDragging = true"
+                             @ondragleave="() => IsDragging = false"
+                             @ondrop="() => IsDragging = false">
+                            <span class="csv-upload-icon-box" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 13v8"></path>
+                                    <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
+                                    <path d="m8 17 4-4 4 4"></path>
+                                </svg>
+                            </span>
+                            <strong>@(FileName ?? "Click to select a CSV file")</strong>
+                            <span class="csv-drop-subtext">
+                                @(FileName is null
+                                    ? "Format: comma or tab separated with 2 columns (x, y). First row header is automatically handled."
+                                    : "File loaded. Click or drop another file to replace it.")
+                            </span>
+                            <InputFile class="csv-file-input"
+                                       accept=".csv,text/csv,.tsv,text/tab-separated-values"
+                                       OnChange="LoadFile"
+                                       aria-label="Select or drop a CSV file" />
+                        </div>
+                    }
+                    else
+                    {
+                        <label class="csv-paste-field">
+                            <span>RAW CSV DATA (X, Y)</span>
+                            <textarea value="@PasteText"
+                                      @oninput="UpdatePaste"
+                                      rows="8"
+                                      aria-label="Raw CSV data"></textarea>
+                        </label>
+                    }
+                </div>
+
+                @if (!string.IsNullOrEmpty(ValidationError))
+                {
+                    <p class="add-values-error" role="alert">@ValidationError</p>
+                }
+            </div>
+
+            <footer class="csv-helper-footer">
+                <button type="button" class="csv-clear-button" disabled="@(PointCount == 0)" @onclick="RequestClear">
+                    Clear table
+                </button>
+                <button type="button" class="csv-cancel-button" @onclick="OnClose">Cancel</button>
+                <button type="button" class="modal-primary-button csv-import-button" disabled="@(!CanImport)" @onclick="Import">
+                    Import Data
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </button>
+            </footer>
+        </section>
+    </div>
+}
+
+@code {
+    private const long MaxUploadSizeBytes = 1024 * 1024;
+
+    [Parameter] public bool IsVisible { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+    [Parameter] public EventCallback<IReadOnlyList<(double X, double Y)>> OnImport { get; set; }
+    [Parameter] public EventCallback OnClearTable { get; set; }
+    [Parameter] public int PointCount { get; set; }
+
+    private string FileText { get; set; } = string.Empty;
+    private string PasteText { get; set; } = string.Empty;
+    private string? FileName { get; set; }
+    private string? ValidationError { get; set; }
+    private bool WasVisible { get; set; }
+    private bool IsDragging { get; set; }
+    private bool IsConfirmingClear { get; set; }
+    private InputTab ActiveTab { get; set; } = InputTab.Upload;
+    private bool CanImport => ActiveTab == InputTab.Paste || FileName is not null;
+
+    protected override void OnParametersSet()
+    {
+        if (IsVisible && !WasVisible)
+        {
+            FileText = string.Empty;
+            PasteText = string.Empty;
+            FileName = null;
+            ValidationError = null;
+            IsDragging = false;
+            IsConfirmingClear = false;
+            ActiveTab = InputTab.Upload;
+        }
+
+        WasVisible = IsVisible;
+    }
+
+    private void SelectTab(InputTab tab)
+    {
+        ActiveTab = tab;
+        ValidationError = null;
+    }
+
+    private void RequestClear() => IsConfirmingClear = PointCount > 0;
+
+    private void CancelClear() => IsConfirmingClear = false;
+
+    private async Task ClearTable()
+    {
+        await OnClearTable.InvokeAsync();
+        IsConfirmingClear = false;
+    }
+
+    private void UpdatePaste(ChangeEventArgs args)
+    {
+        PasteText = args.Value?.ToString() ?? string.Empty;
+        ValidationError = null;
+    }
+
+    private async Task LoadFile(InputFileChangeEventArgs args)
+    {
+        IsDragging = false;
+        var file = args.File;
+        FileName = null;
+        FileText = string.Empty;
+
+        if (!file.Name.EndsWith(".csv", StringComparison.OrdinalIgnoreCase) &&
+            !file.Name.EndsWith(".tsv", StringComparison.OrdinalIgnoreCase))
+        {
+            ValidationError = "Choose a .csv or .tsv file.";
+            return;
+        }
+
+        if (file.Size > MaxUploadSizeBytes)
+        {
+            ValidationError = "The selected file is larger than 1 MB.";
+            return;
+        }
+
+        try
+        {
+            await using var stream = file.OpenReadStream(MaxUploadSizeBytes);
+            using var reader = new StreamReader(stream);
+            FileText = await reader.ReadToEndAsync();
+            FileName = file.Name;
+            ValidationError = null;
+        }
+        catch (IOException)
+        {
+            ValidationError = "The selected file could not be read. Choose another file or paste the data instead.";
+        }
+    }
+
+    private async Task Import()
+    {
+        var source = ActiveTab == InputTab.Upload ? FileText : PasteText;
+        if (!CsvDataParser.TryParse(source, out var coordinates, out var error))
+        {
+            ValidationError = error;
+            return;
+        }
+
+        await OnImport.InvokeAsync(coordinates);
+    }
+
+    private enum InputTab
+    {
+        Upload,
+        Paste
+    }
+}

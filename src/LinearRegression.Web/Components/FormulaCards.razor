@@ -7,29 +7,76 @@
         <h2 id="formula-title">Linear Regression Formula</h2>
         <span class="model-pill">Solved Model: @ModelText</span>
     </div>
+    <p class="formula-hint no-print">Hover over or focus any equation to see the full computation.</p>
     <div class="formula-grid">
         <article class="formula-card">
             <h3>Straight Line Equation</h3>
-            <div class="equation-box">y = a + bX</div>
+            <div class="formula-hover" tabindex="0">
+                <div class="equation-box">y = a + bX</div>
+                <div class="formula-tooltip align-start" role="tooltip">
+                    <p class="tip-title">Straight line model</p>
+                    <p class="tip-step">The fitted line predicts y from x using the intercept a and slope b.</p>
+                    <p class="tip-step">1. Find b (slope) from the b Value Equation.</p>
+                    <p class="tip-step">2. Find a (intercept) from the a Value Equation.</p>
+                    <p class="tip-step">3. Substitute: <code>y = a + bX</code></p>
+                    <p class="tip-result"><code>y = @Value(Result.A) + @Value(Result.B)X</code></p>
+                    @if (Result.IsValid)
+                    {
+                        <p class="tip-step">Check: at x = x̄ = @Value(Result.MeanX), ŷ = @Value(Result.A) + @Value(Result.B) × @Value(Result.MeanX) = <code>@Value(Result.A + Result.B * Result.MeanX)</code> = ȳ</p>
+                    }
+                </div>
+            </div>
             <div class="formula-divider"></div>
             <p class="formula-label">Current Result:</p>
-            <p class="calculation strong">y = @Value(Result.A) + @Value(Result.B)X</p>
+            <div class="formula-hover" tabindex="0">
+                <p class="calculation strong">y = @Value(Result.A) + @Value(Result.B)X</p>
+                <div class="formula-tooltip align-start" role="tooltip">
+                    <p class="tip-title">How this result is built</p>
+                    <p class="tip-step">a = @Value(Result.A) &nbsp;(intercept)</p>
+                    <p class="tip-step">b = @Value(Result.B) &nbsp;(slope)</p>
+                    <p class="tip-result"><code>y = @Value(Result.A) + @Value(Result.B)X</code></p>
+                    @if (Result.IsValid)
+                    {
+                        <p class="tip-step">Each unit increase in x changes the predicted y by @Value(Result.B).</p>
+                    }
+                </div>
+            </div>
         </article>
         <article class="formula-card">
             <h3>b Value Equation</h3>
-            <div class="equation-box equation-long">b = Σ(x - x̄)(y - ȳ) / Σ(x - x̄)²</div>
+            <div class="formula-hover" tabindex="0">
+                <div class="equation-box equation-long">b = Σ(x - x̄)(y - ȳ) / Σ(x - x̄)²</div>
+                <div class="formula-tooltip align-center" role="tooltip">
+                    @SlopeSteps()
+                </div>
+            </div>
             <div class="formula-divider"></div>
             <p class="formula-label">Calculation (Slope B):</p>
-            <p class="calculation">b = @Value(Result.SumXY) / @Value(Result.SumXX)</p>
-            <p class="calculation strong">b = @Value(Result.B)</p>
+            <div class="formula-hover" tabindex="0">
+                <p class="calculation">b = @Value(Result.SumXY) / @Value(Result.SumXX)</p>
+                <p class="calculation strong">b = @Value(Result.B)</p>
+                <div class="formula-tooltip align-center" role="tooltip">
+                    @SlopeSteps()
+                </div>
+            </div>
         </article>
         <article class="formula-card">
             <h3>a Value Equation</h3>
-            <div class="equation-box">a = ȳ - bx̄</div>
+            <div class="formula-hover" tabindex="0">
+                <div class="equation-box">a = ȳ - bx̄</div>
+                <div class="formula-tooltip align-end" role="tooltip">
+                    @InterceptSteps()
+                </div>
+            </div>
             <div class="formula-divider"></div>
             <p class="formula-label">Calculation (Intercept A):</p>
-            <p class="calculation">a = @Value(Result.MeanY) - (@Value(Result.B))(@Value(Result.MeanX))</p>
-            <p class="calculation strong">a = @Value(Result.A)</p>
+            <div class="formula-hover" tabindex="0">
+                <p class="calculation">a = @Value(Result.MeanY) - (@Value(Result.B))(@Value(Result.MeanX))</p>
+                <p class="calculation strong">a = @Value(Result.A)</p>
+                <div class="formula-tooltip align-end" role="tooltip">
+                    @InterceptSteps()
+                </div>
+            </div>
         </article>
     </div>
     @if (!Result.IsValid)
@@ -39,7 +86,10 @@
 </section>
 
 @code {
+    private const int MaxListedTerms = 6;
+
     [Parameter, EditorRequired] public RegressionResult Result { get; set; } = default!;
+    [Parameter] public IReadOnlyList<DataPoint> Points { get; set; } = [];
     [Parameter] public int Decimals { get; set; } = 3;
 
     private string ModelText => Result.IsValid ? $"y = {Value(Result.A)} + {Value(Result.B)}X" : "—";
@@ -47,4 +97,68 @@
     private string Value(double value) => Result.IsValid
         ? value.ToString($"F{Math.Clamp(Decimals, 0, 15)}", CultureInfo.InvariantCulture)
         : "—";
+
+    private string Num(double value) =>
+        value.ToString($"F{Math.Clamp(Decimals, 0, 15)}", CultureInfo.InvariantCulture);
+
+    private string Signed(double value) => value < 0 ? $"({Num(value)})" : Num(value);
+
+    private RenderFragment SlopeSteps() => @<text>
+        <p class="tip-title">Slope: b = Σ(x - x̄)(y - ȳ) / Σ(x - x̄)²</p>
+        @if (!Result.IsValid || Points.Count == 0)
+        {
+            <p class="tip-step">Add at least 2 points with different x values to see the computation.</p>
+        }
+        else
+        {
+            var n = Points.Count;
+            var sumX = Points.Sum(point => point.X);
+            var sumY = Points.Sum(point => point.Y);
+            var listed = Points.Take(MaxListedTerms).ToList();
+            var hidden = n - listed.Count;
+            <p class="tip-step"><strong>Step 1 — Means</strong></p>
+            <p class="tip-step">x̄ = Σx / n = @Num(sumX) / @n = <code>@Num(Result.MeanX)</code></p>
+            <p class="tip-step">ȳ = Σy / n = @Num(sumY) / @n = <code>@Num(Result.MeanY)</code></p>
+            <p class="tip-step"><strong>Step 2 — Σ(x - x̄)(y - ȳ)</strong></p>
+            @foreach (var point in listed)
+            {
+                <p class="tip-term">(@Num(point.X) - @Num(Result.MeanX))(@Num(point.Y) - @Num(Result.MeanY)) = @Num((point.X - Result.MeanX) * (point.Y - Result.MeanY))</p>
+            }
+            @if (hidden > 0)
+            {
+                <p class="tip-term">… and @hidden more @(hidden == 1 ? "row" : "rows")</p>
+            }
+            <p class="tip-step">Σ(x - x̄)(y - ȳ) = <code>@Num(Result.SumXY)</code></p>
+            <p class="tip-step"><strong>Step 3 — Σ(x - x̄)²</strong></p>
+            @foreach (var point in listed)
+            {
+                <p class="tip-term">(@Num(point.X) - @Num(Result.MeanX))² = @Num((point.X - Result.MeanX) * (point.X - Result.MeanX))</p>
+            }
+            @if (hidden > 0)
+            {
+                <p class="tip-term">… and @hidden more @(hidden == 1 ? "row" : "rows")</p>
+            }
+            <p class="tip-step">Σ(x - x̄)² = <code>@Num(Result.SumXX)</code></p>
+            <p class="tip-step"><strong>Step 4 — Divide</strong></p>
+            <p class="tip-result"><code>b = @Num(Result.SumXY) / @Num(Result.SumXX) = @Num(Result.B)</code></p>
+        }
+    </text>;
+
+    private RenderFragment InterceptSteps() => @<text>
+        <p class="tip-title">Intercept: a = ȳ - b x̄</p>
+        @if (!Result.IsValid)
+        {
+            <p class="tip-step">Add at least 2 points with different x values to see the computation.</p>
+        }
+        else
+        {
+            <p class="tip-step">The line always passes through the mean point (x̄, ȳ), so a is where it crosses x = 0.</p>
+            <p class="tip-step"><strong>Step 1 — Inputs</strong></p>
+            <p class="tip-step">ȳ = @Num(Result.MeanY), &nbsp;x̄ = @Num(Result.MeanX), &nbsp;b = @Num(Result.B)</p>
+            <p class="tip-step"><strong>Step 2 — Multiply b by x̄</strong></p>
+            <p class="tip-term">b · x̄ = @Signed(Result.B) × @Signed(Result.MeanX) = @Num(Result.B * Result.MeanX)</p>
+            <p class="tip-step"><strong>Step 3 — Subtract from ȳ</strong></p>
+            <p class="tip-result"><code>a = @Num(Result.MeanY) - @Signed(Result.B * Result.MeanX) = @Num(Result.A)</code></p>
+        }
+    </text>;
 }

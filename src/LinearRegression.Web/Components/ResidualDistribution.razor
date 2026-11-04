@@ -1,0 +1,356 @@
+@using System.Globalization
+@using System.Text
+@using LinearRegression.Web.Models
+
+<!-- Normal distribution of the regression residuals -->
+<section class="panel plot-panel distribution-panel" aria-labelledby="distribution-title">
+    <div class="plot-heading">
+        <div class="plot-title-group">
+            <div class="heading-copy">
+                <h2 id="distribution-title">Normal Distribution of Residuals</h2>
+                <span class="model-pill plot-model">@SummaryText</span>
+            </div>
+            <p class="plot-subtitle">Residuals (y - ŷ) from the fitted line, compared with a normal curve centered at 0 using the standard error of the estimate (s).</p>
+        </div>
+        @if (Stats is not null)
+        {
+            <button type="button" class="plot-info-button no-print" aria-label="Show normal distribution calculation details" title="How is this calculated?" @onclick="OpenDetails">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+            </button>
+        }
+    </div>
+    <div class="chart-wrap">
+        <svg class="chart-svg" viewBox="0 0 700 380" role="img" aria-label="Histogram of residuals with a fitted normal distribution curve" @onmouseleave="ClearHoveredBin">
+            <rect x="@Left" y="@Top" width="@PlotWidth" height="@PlotHeight" class="plot-background"></rect>
+            @if (Stats is { } stats)
+            {
+                @foreach (var tick in YTicks(stats))
+                {
+                    var y = ScaleY(stats, tick);
+                    <line x1="@Left" y1="@Svg(y)" x2="@Right" y2="@Svg(y)" class="grid-line"></line>
+                    @SvgLabel(Left - 12, y + 4, "tick-label", "end", tick.ToString("0.###", CultureInfo.InvariantCulture))
+                }
+                @foreach (var sigma in SigmaMarks)
+                {
+                    var x = ScaleX(stats, sigma * stats.S);
+                    <line x1="@Svg(x)" y1="@Top" x2="@Svg(x)" y2="@Bottom" class="@(sigma == 0 ? "mean-guide" : "grid-line")"></line>
+                    @SvgLabel(x, Bottom + 18, "tick-label", "middle", SigmaLabel(sigma))
+                    @SvgLabel(x, Bottom + 31, "tick-label", "middle", Format(sigma * stats.S))
+                }
+                @foreach (var bin in stats.Bins)
+                {
+                    var x = ScaleX(stats, bin.Start);
+                    var width = ScaleX(stats, bin.End) - x;
+                    var y = ScaleY(stats, bin.Density);
+                    <rect x="@Svg(x)" y="@Svg(y)" width="@Svg(Math.Max(width - 1, 0))" height="@Svg(Bottom - y)" class="histogram-bar"
+                          tabindex="0"
+                          role="graphics-symbol"
+                          aria-label="@BinLabel(bin)"
+                          @onmouseover="() => HoveredBin = bin"
+                          @onfocus="() => HoveredBin = bin"
+                          @onblur="ClearHoveredBin">
+                    </rect>
+                }
+                <path d="@CurvePath(stats)" class="normal-curve"></path>
+                @if (HoveredBin is { } hoveredBin)
+                {
+                    <foreignObject x="@Svg(TooltipX(stats, hoveredBin))" y="@Svg(TooltipY(stats, hoveredBin))" width="@Svg(HoverTooltipWidth)" height="@Svg(HoverTooltipHeight)" pointer-events="auto">
+                        <div xmlns="http://www.w3.org/1999/xhtml" class="formula-tooltip chart-hover-tooltip" role="tooltip">
+                            <p class="tip-title">Residuals from @Format(hoveredBin.Start) to @Format(hoveredBin.End)</p>
+                            <p class="tip-step">@hoveredBin.Count @(hoveredBin.Count == 1 ? "data point" : "data points") · density = @Format(hoveredBin.Density)</p>
+                            @if (hoveredBin.Points.Count > 0)
+                            {
+                                <p class="tip-step"><strong>Calculations:</strong></p>
+                                @foreach (var point in hoveredBin.Points)
+                                {
+                                    <p class="tip-term">x = @Format(point.X), y = @Format(point.Y), ŷ = @Format(point.Predicted), residual = @Format(point.Residual)</p>
+                                }
+                            }
+                            else
+                            {
+                                <p class="tip-result">No observed values.</p>
+                            }
+                        </div>
+                    </foreignObject>
+                }
+            }
+            <line x1="@Left" y1="@Top" x2="@Left" y2="@Bottom" class="axis-line"></line>
+            <line x1="@Left" y1="@Bottom" x2="@Right" y2="@Bottom" class="axis-line"></line>
+            <text x="@Svg((Left + Right) / 2)" y="368" class="axis-title" text-anchor="middle">Residual (y - ŷ)</text>
+            <text x="18" y="@Svg((Top + Bottom) / 2)" class="axis-title" text-anchor="middle" transform="rotate(-90 18 @Svg((Top + Bottom) / 2))">Probability Density</text>
+            @if (Stats is null)
+            {
+                @SvgLabel((Left + Right) / 2, (Top + Bottom) / 2, "empty-chart-text", "middle", EmptyMessage)
+            }
+        </svg>
+    </div>
+    <div class="plot-legend">
+        <span><i class="legend-bar"></i>Observed residuals (density)</span>
+        <span><i class="legend-line"></i>Normal curve N(0, s²)</span>
+        @if (Stats is { } legendStats)
+        {
+            <span>n = @Points.Count</span>
+            <span>Mean residual = @Format(legendStats.Mean)</span>
+            <span>s = √(SSE / (n - 2)) = @Format(legendStats.S)</span>
+            <span>Within ±1s: @legendStats.WithinOne of @Points.Count (normal expects ≈ 68%)</span>
+            <span>Within ±2s: @legendStats.WithinTwo of @Points.Count (normal expects ≈ 95%)</span>
+        }
+    </div>
+</section>
+
+@if (ShowDetails && Stats is { } detail)
+{
+    var rows = DetailRows;
+    var n = rows.Count;
+    var sumResiduals = rows.Sum(row => row.Residual);
+    var binWidth = detail.Bins[0].End - detail.Bins[0].Start;
+    var prefactor = 1 / (detail.S * Math.Sqrt(2 * Math.PI));
+    <div class="add-values-backdrop no-print" @onclick="CloseDetails">
+        <section class="add-values-modal distribution-details-modal"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="distribution-details-title"
+                 @onclick:stopPropagation>
+            <header class="csv-helper-header">
+                <div>
+                    <h2 id="distribution-details-title">Normal Distribution Calculation Details</h2>
+                    <p class="csv-helper-description">The data and formulas behind the residual histogram and the normal curve.</p>
+                </div>
+                <button type="button" class="modal-close-button" aria-label="Close" @onclick="CloseDetails">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+                </button>
+            </header>
+
+            <div class="csv-helper-content distribution-details-content">
+                <section class="details-section">
+                    <h3>1. Data and residuals</h3>
+                    <div class="details-table-wrap">
+                        <table class="details-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Y (actual value)</th>
+                                    <th scope="col">Predicted Y (ŷ)</th>
+                                    <th scope="col">Residual (y − ŷ)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var row in rows)
+                                {
+                                    <tr>
+                                        <td>@Format(row.Y)</td>
+                                        <td>@Format(row.Predicted)</td>
+                                        <td>@Format(row.Residual)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="details-section">
+                    <h3>2. Calculations</h3>
+                    <div class="calc-grid">
+                        <div class="calc-block">
+                            <h4>Mean of residuals (μ)</h4>
+                            <div class="equation-box">μ = Σ(y − ŷ) / n</div>
+                            <p class="calculation">μ = @Format(sumResiduals) / @n = <b>@Format(detail.Mean)</b></p>
+                        </div>
+
+                        <div class="calc-block">
+                            <h4>Sum of squared errors (SSE)</h4>
+                            <div class="equation-box">SSE = Σ(y − ŷ)²</div>
+                            <p class="calculation">SSE = @ResidualSquaresText(rows) = <b>@Format(detail.Sse)</b></p>
+                        </div>
+
+                        <div class="calc-block">
+                            <h4>Standard error of the estimate (s)</h4>
+                            <div class="equation-box">s = √(SSE / (n − 2))</div>
+                            <p class="calculation">s = √(@Format(detail.Sse) / (@n − 2)) = √@Format(detail.Sse / (n - 2)) = <b>@Format(detail.S)</b></p>
+                        </div>
+
+                        <div class="calc-block">
+                            <h4>Normal curve (probability density)</h4>
+                            <div class="equation-box equation-long">f(x) = 1 / (s√(2π)) · e^(−½((x − μ) / s)²)</div>
+                            <p class="calculation">The curve is drawn with μ = 0, since residuals average to 0.</p>
+                            <p class="calculation">1 / (@Format(detail.S) × √(2π)) = <b>@Format(prefactor)</b></p>
+                            <p class="calculation">f(x) = @Format(prefactor) · e^(−½(x / @Format(detail.S))²)</p>
+                            <p class="calculation">Histogram bar height = count / (n × bin width) = count / (@n × @Format(binWidth))</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+}
+
+@code {
+    private const double SvgWidth = 700;
+    private const double SvgHeight = 380;
+    private const double Left = 70;
+    private const double RightMargin = 30;
+    private const double Top = 30;
+    private const double BottomMargin = 70;
+    private const double PlotWidth = SvgWidth - Left - RightMargin;
+    private const double PlotHeight = SvgHeight - Top - BottomMargin;
+    private const double Right = SvgWidth - RightMargin;
+    private const double Bottom = SvgHeight - BottomMargin;
+    private const double HoverTooltipWidth = 250;
+    private const double HoverTooltipHeight = 190;
+    private static readonly int[] SigmaMarks = [-3, -2, -1, 0, 1, 2, 3];
+
+    [Parameter, EditorRequired] public IReadOnlyList<DataPoint> Points { get; set; } = [];
+    [Parameter, EditorRequired] public RegressionResult Result { get; set; } = default!;
+    [Parameter] public int Decimals { get; set; } = 3;
+
+    private bool ShowDetails { get; set; }
+    private Bin? HoveredBin { get; set; }
+
+    private sealed record DetailRow(double X, double Y, double Predicted, double Residual);
+
+    private sealed record Bin(double Start, double End, int Count, double Density, IReadOnlyList<DetailRow> Points);
+
+    private sealed record DistributionStats(
+        double Mean,
+        double S,
+        double Sse,
+        double DomainMin,
+        double DomainMax,
+        double MaxDensity,
+        int WithinOne,
+        int WithinTwo,
+        IReadOnlyList<Bin> Bins);
+
+    private DistributionStats? Stats => ComputeStats();
+
+    private string EmptyMessage => !Result.IsValid
+        ? "Add at least 3 points with different x values."
+        : Points.Count < 3
+            ? "Add at least 3 points to estimate the residual spread."
+            : "Perfect fit: all residuals are 0, so there is no spread to plot.";
+
+    private string SummaryText => Stats is { } stats ? $"N(0, {Format(stats.S)}²)" : "N(0, s²)";
+
+    private DistributionStats? ComputeStats()
+    {
+        if (!Result.IsValid || Result.Rows.Count < 3)
+        {
+            return null;
+        }
+
+        var points = DetailRows;
+        var residuals = points.Select(point => point.Residual).ToList();
+        var n = residuals.Count;
+        var sse = residuals.Sum(residual => residual * residual);
+        var s = Math.Sqrt(sse / (n - 2));
+        if (!double.IsFinite(s) || s <= 1e-12)
+        {
+            return null;
+        }
+
+        var halfRange = Math.Max(3.5 * s, residuals.Max(Math.Abs) * 1.05);
+        var domainMin = -halfRange;
+        var domainMax = halfRange;
+        var binCount = Math.Clamp((int)Math.Ceiling(Math.Log2(n) + 1), 5, 12);
+        var binWidth = (domainMax - domainMin) / binCount;
+        var bins = Enumerable.Range(0, binCount)
+            .Select(index =>
+            {
+                var start = domainMin + index * binWidth;
+                var end = domainMin + (index + 1) * binWidth;
+                var binPoints = points
+                    .Where(point => Math.Clamp((int)((point.Residual - domainMin) / binWidth), 0, binCount - 1) == index)
+                    .ToList();
+                return new Bin(start, end, binPoints.Count, binPoints.Count / (n * binWidth), binPoints);
+            })
+            .ToList();
+
+        var peak = Math.Max(NormalDensity(0, s), bins.Max(bin => bin.Density)) * 1.1;
+        return new DistributionStats(
+            residuals.Average(),
+            s,
+            sse,
+            domainMin,
+            domainMax,
+            peak,
+            residuals.Count(residual => Math.Abs(residual) <= s),
+            residuals.Count(residual => Math.Abs(residual) <= 2 * s),
+            bins);
+    }
+
+    private IReadOnlyList<DetailRow> DetailRows => Points
+        .Join(Result.Rows, point => point.Id, row => row.Id, (point, row) => new DetailRow(point.X, point.Y, row.Predicted, row.Residual))
+        .ToList();
+
+    private void OpenDetails() => ShowDetails = true;
+
+    private void CloseDetails() => ShowDetails = false;
+
+    private void ClearHoveredBin() => HoveredBin = null;
+
+    private string BinLabel(Bin bin) =>
+        $"Residuals from {Format(bin.Start)} to {Format(bin.End)}: {bin.Count} {(bin.Count == 1 ? "point" : "points")}. Focus to inspect point details.";
+
+    private static double TooltipX(DistributionStats stats, Bin bin) =>
+        Math.Clamp(ScaleX(stats, (bin.Start + bin.End) / 2) - HoverTooltipWidth / 2, Left, Right - HoverTooltipWidth);
+
+    private static double TooltipY(DistributionStats stats, Bin bin) =>
+        Math.Clamp(ScaleY(stats, bin.Density) - HoverTooltipHeight - 8, Top + 4, Bottom - HoverTooltipHeight);
+
+    private string ResidualSquaresText(IReadOnlyList<DetailRow> rows)
+    {
+        var terms = rows.Take(3).Select(row => $"({Format(row.Residual)})²");
+        var text = string.Join(" + ", terms);
+        return rows.Count > 3 ? $"{text} + … + ({Format(rows[^1].Residual)})²" : text;
+    }
+
+    private static double NormalDensity(double x, double s) =>
+        Math.Exp(-x * x / (2 * s * s)) / (s * Math.Sqrt(2 * Math.PI));
+
+    private static double ScaleX(DistributionStats stats, double value) =>
+        Left + (value - stats.DomainMin) / (stats.DomainMax - stats.DomainMin) * PlotWidth;
+
+    private static double ScaleY(DistributionStats stats, double density) =>
+        Bottom - density / stats.MaxDensity * PlotHeight;
+
+    private static IEnumerable<double> YTicks(DistributionStats stats) =>
+        Enumerable.Range(0, 5).Select(index => stats.MaxDensity * index / 4d);
+
+    private static string CurvePath(DistributionStats stats)
+    {
+        const int steps = 120;
+        var path = new StringBuilder();
+        for (var step = 0; step <= steps; step++)
+        {
+            var x = stats.DomainMin + (stats.DomainMax - stats.DomainMin) * step / steps;
+            var command = step == 0 ? "M" : "L";
+            path.Append(command)
+                .Append(Svg(ScaleX(stats, x))).Append(' ')
+                .Append(Svg(ScaleY(stats, NormalDensity(x, stats.S))));
+        }
+
+        return path.ToString();
+    }
+
+    private static string SigmaLabel(int sigma) => sigma switch
+    {
+        0 => "0",
+        > 0 => $"+{sigma}s",
+        _ => $"−{-sigma}s"
+    };
+
+    private static string Svg(double value) => value.ToString("0.###", CultureInfo.InvariantCulture);
+
+    private string Format(double value) =>
+        value.ToString($"F{Math.Clamp(Decimals, 0, 15)}", CultureInfo.InvariantCulture);
+
+    private RenderFragment SvgLabel(double x, double y, string cssClass, string anchor, string text) => builder =>
+    {
+        builder.OpenElement(0, "text");
+        builder.AddAttribute(1, "x", Svg(x));
+        builder.AddAttribute(2, "y", Svg(y));
+        builder.AddAttribute(3, "class", cssClass);
+        builder.AddAttribute(4, "text-anchor", anchor);
+        builder.AddContent(5, text);
+        builder.CloseElement();
+    };
+}
