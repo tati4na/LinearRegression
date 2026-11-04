@@ -1,22 +1,219 @@
 @using LinearRegression.Web.Models
+@using LinearRegression.Core.Table
+@using System.Globalization
 
-<!-- Regression table section -->
+@{
+    var table = Table;
+}
+
 <section class="panel table-panel" aria-labelledby="table-title">
     <div class="panel-heading">
         <div class="heading-copy">
             <h2 id="table-title">Linear Regression Table</h2>
             <span class="count-badge">@Points.Count records</span>
         </div>
+        <div class="table-heading-actions">
+            <div class="decimal-tabs" role="group" aria-label="Decimal places">
+                @foreach (var decimals in DecimalOptions)
+                {
+                    <button type="button"
+                            class="decimal-tab @(SelectedDecimals == decimals ? "active" : null)"
+                            aria-label="@($"{decimals} decimal places")"
+                            aria-pressed="@(SelectedDecimals == decimals)"
+                            @onclick="() => SelectedDecimals = decimals">
+                        @decimals
+                    </button>
+                }
+            </div>
+            <button type="button" class="table-add-button" @onclick="OpenAddModal">
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M10 4v12M4 10h12"></path>
+                </svg>
+                <span>Add X and Y Values</span>
+            </button>
+        </div>
     </div>
-    <div class="placeholder-box">
-        <svg class="placeholder-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="3.5" y="4.5" width="17" height="15" rx="2"></rect>
-            <path d="M3.5 9.5h17M9 9.5v10M15 9.5v10"></path>
-        </svg>
-        <p>Regression Table placeholder (Alisin mo nalang toh Alexis)</p>
+    <div class="regression-table-scroll">
+        <table class="regression-table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">x</th>
+                    <th scope="col">y</th>
+                    <th scope="col">x - x̄</th>
+                    <th scope="col">y - ȳ</th>
+                    <th scope="col">(x - x̄) (y - ȳ)</th>
+                    <th scope="col">(x - x̄)²</th>
+                    <th scope="col">Predicted Y</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var rowIndex = 0; rowIndex < VisibleRowCount; rowIndex++)
+                {
+                    var pointIndex = (CurrentPage - 1) * PageSize + rowIndex;
+                    var calculatedRow = pointIndex < table.Rows.Count ? table.Rows[pointIndex] : null;
+                    var rowNumber = pointIndex + 1;
+                    <tr>
+                        <th scope="row">@rowNumber</th>
+                        @if (calculatedRow is null)
+                        {
+                            <td></td>
+                            <td></td>
+                        }
+                        else
+                        {
+                            <td>@Format(calculatedRow.X)</td>
+                            <td>@Format(calculatedRow.Y)</td>
+                        }
+                        <td>@(calculatedRow is null ? null : Format(calculatedRow.XDeviation))</td>
+                        <td>@(calculatedRow is null ? null : Format(calculatedRow.YDeviation))</td>
+                        <td>@(calculatedRow is null ? null : Format(calculatedRow.DeviationProduct))</td>
+                        <td>@(calculatedRow is null ? null : Format(calculatedRow.SquaredXDeviation))</td>
+                        <td>@(calculatedRow?.PredictedY is double predictedY ? Format(predictedY) : null)</td>
+                        <td>
+                            @if (calculatedRow is not null)
+                            {
+                                <div class="table-row-actions">
+                                    <button type="button"
+                                            class="table-row-action edit-row-button"
+                                            aria-label="Edit row @rowNumber"
+                                            @onclick="() => OpenEditModal(new DataPoint(calculatedRow.Id, calculatedRow.X, calculatedRow.Y))">
+                                        <svg viewBox="0 0 20 20" aria-hidden="true">
+                                            <path d="m12.8 3.2 4 4M3 17l3.8-.8L16 7a1.8 1.8 0 0 0-3-3L3.8 13.2 3 17Z"></path>
+                                        </svg>
+                                    </button>
+                                    <button type="button"
+                                            class="table-row-action delete-row-button"
+                                            aria-label="Delete row @rowNumber"
+                                            @onclick="() => OnPointDeleted.InvokeAsync(calculatedRow.Id)">
+                                        <svg viewBox="0 0 20 20" aria-hidden="true">
+                                            <path d="M3.5 5.5h13M8 5.5V3.8h4v1.7m3.3 0-.8 10.7H5.5L4.7 5.5m3.5 3v4.7m3.6-4.7v4.7"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th scope="row">Σ Sum</th>
+                    <td>@(Points.Count > 0 ? Format(table.SumX) : null)</td>
+                    <td>@(Points.Count > 0 ? Format(table.SumY) : null)</td>
+                    <td>@(Points.Count > 0 ? Format(table.SumXDeviation) : null)</td>
+                    <td>@(Points.Count > 0 ? Format(table.SumYDeviation) : null)</td>
+                    <td>@(Points.Count > 0 ? Format(table.SumDeviationProduct) : null)</td>
+                    <td>@(Points.Count > 0 ? Format(table.SumSquaredXDeviation) : null)</td>
+                    <td>@(table.SumPredictedY is double sumPredictedY ? Format(sumPredictedY) : null)</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th scope="row">Mean</th>
+                    <td>@(Points.Count > 0 ? Format(table.MeanX) : null)</td>
+                    <td>@(Points.Count > 0 ? Format(table.MeanY) : null)</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
+    <div class="table-pagination" aria-label="Table pagination">
+        <button type="button"
+                class="pagination-button"
+                aria-label="Previous page"
+                disabled="@(CurrentPage <= 1)"
+                @onclick="PreviousPage">
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="m12 4-6 6 6 6"></path>
+            </svg>
+        </button>
+        <span class="pagination-status" aria-live="polite">Page @CurrentPage of @TotalPages</span>
+        <button type="button"
+                class="pagination-button"
+                aria-label="Next page"
+                disabled="@(CurrentPage >= TotalPages)"
+                @onclick="NextPage">
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="m8 4 6 6-6 6"></path>
+            </svg>
+        </button>
+    </div>
+    <AddValueModal IsVisible="IsAddModalVisible"
+                   Points="Points"
+                   EditingPoint="EditingPoint"
+                   OnClose="CloseAddModal"
+                   OnAdd="AddPoint"
+                   OnUpdate="UpdatePoint" />
 </section>
 
 @code {
     [Parameter, EditorRequired] public IReadOnlyList<DataPoint> Points { get; set; } = [];
+    [Parameter] public EventCallback<DataPoint> OnPointAdded { get; set; }
+    [Parameter] public EventCallback<DataPoint> OnPointUpdated { get; set; }
+    [Parameter] public EventCallback<int> OnPointDeleted { get; set; }
+
+    private static readonly int[] DecimalOptions = [2, 3, 4];
+    private const int PageSize = 10;
+    private bool IsAddModalVisible { get; set; }
+    private DataPoint? EditingPoint { get; set; }
+    private int SelectedDecimals { get; set; } = 2;
+    private int CurrentPage { get; set; } = 1;
+    private int TotalPages => Math.Max(1, (int)Math.Ceiling(Points.Count / (double)PageSize));
+    private int VisibleRowCount => Points.Count == 0
+        ? 1
+        : Math.Min(PageSize, Points.Count - (CurrentPage - 1) * PageSize);
+    private RegressionTableResult Table => RegressionTable.Calculate(
+        Points.Select(point => new RegressionTableInput(point.Id, point.X, point.Y)).ToArray());
+
+    protected override void OnParametersSet()
+    {
+        CurrentPage = Math.Clamp(CurrentPage, 1, TotalPages);
+    }
+
+    private string Format(double value) =>
+        value.ToString($"F{SelectedDecimals}", CultureInfo.InvariantCulture);
+
+    private void PreviousPage()
+    {
+        if (CurrentPage > 1)
+        {
+            CurrentPage--;
+        }
+    }
+
+    private void NextPage()
+    {
+        if (CurrentPage < TotalPages)
+        {
+            CurrentPage++;
+        }
+    }
+
+    private void OpenAddModal()
+    {
+        EditingPoint = null;
+        IsAddModalVisible = true;
+    }
+
+    private void OpenEditModal(DataPoint point)
+    {
+        EditingPoint = point;
+        IsAddModalVisible = true;
+    }
+
+    private void CloseAddModal()
+    {
+        IsAddModalVisible = false;
+        EditingPoint = null;
+    }
+
+    private Task AddPoint(DataPoint point) => OnPointAdded.InvokeAsync(point);
+
+    private Task UpdatePoint(DataPoint point) => OnPointUpdated.InvokeAsync(point);
 }

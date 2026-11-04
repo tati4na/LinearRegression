@@ -1,93 +1,3 @@
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\appsettings.Development.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\appsettings.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.staticwebassets.runtime.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.staticwebassets.endpoints.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.exe
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.deps.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.runtimeconfig.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.dll
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.pdb
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Core.dll
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Core.pdb
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\EmbeddedAttribute.cs
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\ValidatableTypeAttribute.cs
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.csproj.AssemblyReference.cache
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\rpswa.dswa.cache.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.GeneratedMSBuildEditorConfig.editorconfig
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.AssemblyInfoInputs.cache
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.AssemblyInfo.cs
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.csproj.CoreCompileInputs.cache
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.MvcApplicationPartsAssemblyInfo.cache
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.sourcelink.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\rjimswa.dswa.cache.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\scopedcss\Components\Layout\ReconnectModal.razor.rz.scp.css
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\scopedcss\bundle\LinearRegression.Web.styles.css
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\scopedcss\projectbundle\LinearRegression.Web.bundle.scp.css
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\1tlqc51fbm-{0}-khy4lop6wu-khy4lop6wu.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\mldfkio1tm-{0}-bqjiyaj88i-bqjiyaj88i.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\yi513vtkv2-{0}-c2jlpeoesf-c2jlpeoesf.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\p2y7w36ua1-{0}-erw9l3u2r3-erw9l3u2r3.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\e5v86qtyp4-{0}-aexeepp0ev-aexeepp0ev.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\xrdiwvdl3z-{0}-d7shbmvgxk-d7shbmvgxk.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\004dls2tvq-{0}-ausgxo2sd3-ausgxo2sd3.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\bvuskrd442-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\45km9ifwqz-{0}-cosvhxvwiu-cosvhxvwiu.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\6eb56k9c3r-{0}-ub07r2b239-ub07r2b239.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\xhr3dua34t-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\h6qxnivqtw-{0}-b7pk76d08c-b7pk76d08c.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\7zgleshe1p-{0}-fsbi9cje9m-fsbi9cje9m.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\5putjo5cmt-{0}-rzd6atqjts-rzd6atqjts.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\cuqn85uk50-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\c8gpa14gbl-{0}-dxx9fxp4il-dxx9fxp4il.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\oiismg9rif-{0}-jd9uben2k1-jd9uben2k1.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\vwr4iv3oij-{0}-khv3u5hwcm-khv3u5hwcm.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\h14xwzrz6n-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\r4ae4pa287-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\3t9o1u2uba-{0}-c2oey78nd0-c2oey78nd0.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\3mpfiv00na-{0}-tdbxkamptv-tdbxkamptv.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\8q31lbiabs-{0}-j5mq2jizvt-j5mq2jizvt.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\8qvnujzl3u-{0}-06098lyss8-06098lyss8.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\u2148syobx-{0}-nvvlpmu67g-nvvlpmu67g.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\i2ufqxfjdo-{0}-s35ty4nyc5-s35ty4nyc5.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\m7gt9fyb5v-{0}-pj5nd1wqec-pj5nd1wqec.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\z548a4g024-{0}-46ein0sx1k-46ein0sx1k.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\q8fhyr347h-{0}-v0zj4ognzu-v0zj4ognzu.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\tfo2inndy6-{0}-37tfw0ft22-37tfw0ft22.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\auheqiubhi-{0}-hrwsygsryq-hrwsygsryq.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\m3k8u5j534-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\cz4c9sqgbr-{0}-ft3s53vfgj-ft3s53vfgj.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\uxenpd2qgw-{0}-6cfz1n2cew-6cfz1n2cew.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\g2u0a2n1qa-{0}-6pdc2jztkx-6pdc2jztkx.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\348xm6qpyb-{0}-493y06b0oq-493y06b0oq.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\rsd85s63p0-{0}-iovd86k7lj-iovd86k7lj.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\wpytrcz29q-{0}-vr1egmr9el-vr1egmr9el.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\f9fsxcfzy4-{0}-kbrnm935zg-kbrnm935zg.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\06omvufw1e-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\8rz4u2giix-{0}-y7v9cxd14o-y7v9cxd14o.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\cakemwhfk8-{0}-notf2xhcfb-notf2xhcfb.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\zisgcyvak2-{0}-h1s4sie4z3-h1s4sie4z3.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\yvrje9m4jg-{0}-63fj8s7r0e-63fj8s7r0e.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\9t0t273kjd-{0}-0j3bgjxly4-0j3bgjxly4.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\aqdq5ldsld-{0}-abdmv1u4y3-abdmv1u4y3.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\qsog0emwq9-{0}-xmryko9e6j-xmryko9e6j.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\8ul5416iye-{0}-7d17r9czpp-7d17r9czpp.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\hpi0vdz2w3-{0}-9cj9zbbt71-9cj9zbbt71.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\07fybaojjl-{0}-9cj9zbbt71-9cj9zbbt71.gz
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\staticwebassets.build.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\staticwebassets.build.json.cache
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\staticwebassets.development.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\staticwebassets.build.endpoints.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\swae.build.ex.cache
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRe.F8F54EDE.Up2Date
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.dll
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\refint\LinearRegression.Web.dll
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.pdb
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.genruntimeconfig.cache
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\ref\LinearRegression.Web.dll
 C:\Users\User\Desktop\Programming\LinearRegression\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\appsettings.Development.json
 C:\Users\User\Desktop\Programming\LinearRegression\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\appsettings.json
 C:\Users\User\Desktop\Programming\LinearRegression\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.staticwebassets.runtime.json
@@ -196,17 +106,111 @@ C:\Users\User\AppData\Local\Temp\LinearRegressionBuildFinal\LinearRegression.Web
 C:\Users\User\AppData\Local\Temp\LinearRegressionBuildFinal\LinearRegression.Web.runtimeconfig.json
 C:\Users\User\AppData\Local\Temp\LinearRegressionBuildFinal\LinearRegression.Web.dll
 C:\Users\User\AppData\Local\Temp\LinearRegressionBuildFinal\LinearRegression.Web.pdb
-C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\appsettings.Development.json
-C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\appsettings.json
-C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.staticwebassets.endpoints.json
-C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.staticwebassets.runtime.json
-C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.exe
-C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.deps.json
-C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.runtimeconfig.json
-C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.dll
-C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.pdb
-C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Core.dll
-C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Core.pdb
+<<<<<<< HEAD
+=======
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\appsettings.Development.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\appsettings.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.staticwebassets.runtime.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.staticwebassets.endpoints.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.exe
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.deps.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.runtimeconfig.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.dll
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.pdb
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Core.dll
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Core.pdb
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\EmbeddedAttribute.cs
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\ValidatableTypeAttribute.cs
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.csproj.AssemblyReference.cache
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.GeneratedMSBuildEditorConfig.editorconfig
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.AssemblyInfoInputs.cache
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.AssemblyInfo.cs
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.csproj.CoreCompileInputs.cache
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.MvcApplicationPartsAssemblyInfo.cache
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.sourcelink.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRe.F8F54EDE.Up2Date
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.dll
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\refint\LinearRegression.Web.dll
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.pdb
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.genruntimeconfig.cache
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\ref\LinearRegression.Web.dll
+C:\Users\USER\AppData\Local\Temp\LinearRegression-build\appsettings.Development.json
+C:\Users\USER\AppData\Local\Temp\LinearRegression-build\appsettings.json
+C:\Users\USER\AppData\Local\Temp\LinearRegression-build\LinearRegression.Web.deps.json
+C:\Users\USER\AppData\Local\Temp\LinearRegression-build\LinearRegression.Web.runtimeconfig.json
+C:\Users\USER\AppData\Local\Temp\LinearRegression-build\LinearRegression.Web.dll
+C:\Users\USER\AppData\Local\Temp\LinearRegression-build\LinearRegression.Web.pdb
+C:\Users\USER\AppData\Local\Temp\LinearRegression-frontend-build\appsettings.Development.json
+C:\Users\USER\AppData\Local\Temp\LinearRegression-frontend-build\appsettings.json
+C:\Users\USER\AppData\Local\Temp\LinearRegression-frontend-build\LinearRegression.Web.deps.json
+C:\Users\USER\AppData\Local\Temp\LinearRegression-frontend-build\LinearRegression.Web.runtimeconfig.json
+C:\Users\USER\AppData\Local\Temp\LinearRegression-frontend-build\LinearRegression.Web.dll
+C:\Users\USER\AppData\Local\Temp\LinearRegression-frontend-build\LinearRegression.Web.pdb
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\rjimswa.dswa.cache.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\scopedcss\Components\Layout\NavMenu.razor.rz.scp.css
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\scopedcss\Components\Layout\ReconnectModal.razor.rz.scp.css
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\scopedcss\bundle\LinearRegression.Web.styles.css
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\scopedcss\projectbundle\LinearRegression.Web.bundle.scp.css
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\mldfkio1tm-{0}-bqjiyaj88i-bqjiyaj88i.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\yi513vtkv2-{0}-c2jlpeoesf-c2jlpeoesf.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\p2y7w36ua1-{0}-erw9l3u2r3-erw9l3u2r3.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\e5v86qtyp4-{0}-aexeepp0ev-aexeepp0ev.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\xrdiwvdl3z-{0}-d7shbmvgxk-d7shbmvgxk.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\004dls2tvq-{0}-ausgxo2sd3-ausgxo2sd3.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\bvuskrd442-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\45km9ifwqz-{0}-cosvhxvwiu-cosvhxvwiu.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\6eb56k9c3r-{0}-ub07r2b239-ub07r2b239.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\xhr3dua34t-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\h6qxnivqtw-{0}-b7pk76d08c-b7pk76d08c.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\7zgleshe1p-{0}-fsbi9cje9m-fsbi9cje9m.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\5putjo5cmt-{0}-rzd6atqjts-rzd6atqjts.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\cuqn85uk50-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\c8gpa14gbl-{0}-dxx9fxp4il-dxx9fxp4il.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\oiismg9rif-{0}-jd9uben2k1-jd9uben2k1.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\vwr4iv3oij-{0}-khv3u5hwcm-khv3u5hwcm.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\h14xwzrz6n-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\r4ae4pa287-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\3t9o1u2uba-{0}-c2oey78nd0-c2oey78nd0.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\3mpfiv00na-{0}-tdbxkamptv-tdbxkamptv.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\8q31lbiabs-{0}-j5mq2jizvt-j5mq2jizvt.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\8qvnujzl3u-{0}-06098lyss8-06098lyss8.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\u2148syobx-{0}-nvvlpmu67g-nvvlpmu67g.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\i2ufqxfjdo-{0}-s35ty4nyc5-s35ty4nyc5.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\m7gt9fyb5v-{0}-pj5nd1wqec-pj5nd1wqec.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\z548a4g024-{0}-46ein0sx1k-46ein0sx1k.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\q8fhyr347h-{0}-v0zj4ognzu-v0zj4ognzu.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\tfo2inndy6-{0}-37tfw0ft22-37tfw0ft22.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\auheqiubhi-{0}-hrwsygsryq-hrwsygsryq.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\m3k8u5j534-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\cz4c9sqgbr-{0}-ft3s53vfgj-ft3s53vfgj.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\uxenpd2qgw-{0}-6cfz1n2cew-6cfz1n2cew.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\g2u0a2n1qa-{0}-6pdc2jztkx-6pdc2jztkx.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\348xm6qpyb-{0}-493y06b0oq-493y06b0oq.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\rsd85s63p0-{0}-iovd86k7lj-iovd86k7lj.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\wpytrcz29q-{0}-vr1egmr9el-vr1egmr9el.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\f9fsxcfzy4-{0}-kbrnm935zg-kbrnm935zg.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\06omvufw1e-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\8rz4u2giix-{0}-y7v9cxd14o-y7v9cxd14o.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\cakemwhfk8-{0}-notf2xhcfb-notf2xhcfb.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\zisgcyvak2-{0}-h1s4sie4z3-h1s4sie4z3.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\yvrje9m4jg-{0}-63fj8s7r0e-63fj8s7r0e.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\9t0t273kjd-{0}-0j3bgjxly4-0j3bgjxly4.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\aqdq5ldsld-{0}-abdmv1u4y3-abdmv1u4y3.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\qsog0emwq9-{0}-xmryko9e6j-xmryko9e6j.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\8ul5416iye-{0}-7d17r9czpp-7d17r9czpp.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\hpi0vdz2w3-{0}-9cj9zbbt71-9cj9zbbt71.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\07fybaojjl-{0}-9cj9zbbt71-9cj9zbbt71.gz
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\staticwebassets.build.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\staticwebassets.build.json.cache
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\staticwebassets.development.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\swae.build.ex.cache
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\1tlqc51fbm-{0}-g79b65udp3-g79b65udp3.gz
+>>>>>>> b925d50cac868d725e28945e4bb806da82250fdd
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\EmbeddedAttribute.cs
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\ValidatableTypeAttribute.cs
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.csproj.AssemblyReference.cache
@@ -225,7 +229,7 @@ C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\scopedcss\Components\Layout\ReconnectModal.razor.rz.scp.css
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\scopedcss\bundle\LinearRegression.Web.styles.css
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\scopedcss\projectbundle\LinearRegression.Web.bundle.scp.css
-C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\1tlqc51fbm-{0}-6l50ijn0z3-6l50ijn0z3.gz
+C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\1tlqc51fbm-{0}-g79b65udp3-g79b65udp3.gz
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\mldfkio1tm-{0}-t1cqhe9u97-t1cqhe9u97.gz
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\yi513vtkv2-{0}-c2jlpeoesf-c2jlpeoesf.gz
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\p2y7w36ua1-{0}-sejl45xvog-sejl45xvog.gz
@@ -275,14 +279,25 @@ C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\8ul5416iye-{0}-dwu72t6gfx-dwu72t6gfx.gz
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\hpi0vdz2w3-{0}-9cj9zbbt71-9cj9zbbt71.gz
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\compressed\07fybaojjl-{0}-9cj9zbbt71-9cj9zbbt71.gz
+C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.dll
+C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\refint\LinearRegression.Web.dll
+C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.pdb
+C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\appsettings.json
+C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.staticwebassets.runtime.json
+C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.staticwebassets.endpoints.json
+C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.exe
+C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.deps.json
+C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.runtimeconfig.json
+C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.dll
+C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Web.pdb
+C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Core.dll
+C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\bin\Debug\net10.0\LinearRegression.Core.pdb
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\staticwebassets.build.json
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\staticwebassets.build.json.cache
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\staticwebassets.development.json
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\swae.build.ex.cache
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRe.F8F54EDE.Up2Date
-C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.dll
-C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\refint\LinearRegression.Web.dll
-C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.pdb
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\LinearRegression.Web.genruntimeconfig.cache
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Web\obj\Debug\net10.0\ref\LinearRegression.Web.dll

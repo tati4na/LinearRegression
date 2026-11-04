@@ -1,0 +1,118 @@
+@using System.Globalization
+@using LinearRegression.Web.Models
+
+@if (IsVisible)
+{
+    <div class="add-values-backdrop" @onclick="OnClose">
+        <section class="add-values-modal"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="add-values-title"
+                 @onclick:stopPropagation>
+            <header class="add-values-header">
+                <h2 id="add-values-title">Add X and Y Values</h2>
+                <button type="button" class="modal-close-button" aria-label="Close" @onclick="OnClose">
+                    <svg viewBox="0 0 20 20" aria-hidden="true">
+                        <path d="m5 5 10 10M15 5 5 15"></path>
+                    </svg>
+                </button>
+            </header>
+            <form class="add-values-form" @onsubmit="SubmitAndClose" @onsubmit:preventDefault>
+                <div class="add-values-fields">
+                    <label class="value-field">
+                        <span>X Value</span>
+                        <span class="number-input-wrap">
+                            <input type="number" step="any" @bind="XValue" required aria-label="X Value" />
+                        </span>
+                    </label>
+                    <label class="value-field">
+                        <span>Y Value</span>
+                        <span class="number-input-wrap">
+                            <input type="number" step="any" @bind="YValue" required aria-label="Y Value" />
+                        </span>
+                    </label>
+                </div>
+                @if (!string.IsNullOrEmpty(ValidationError))
+                {
+                    <p class="add-values-error" role="alert">@ValidationError</p>
+                }
+                <footer class="add-values-actions">
+                    @if (EditingPoint is null)
+                    {
+                        <button type="button" class="modal-secondary-button" @onclick="AddAndAnother">Add &amp; Another</button>
+                    }
+                    <button type="submit" class="modal-primary-button">@(EditingPoint is null ? "Add" : "Save")</button>
+                </footer>
+            </form>
+        </section>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsVisible { get; set; }
+    [Parameter, EditorRequired] public IReadOnlyList<DataPoint> Points { get; set; } = [];
+    [Parameter] public DataPoint? EditingPoint { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+    [Parameter] public EventCallback<DataPoint> OnAdd { get; set; }
+    [Parameter] public EventCallback<DataPoint> OnUpdate { get; set; }
+
+    private string XValue { get; set; } = string.Empty;
+    private string YValue { get; set; } = string.Empty;
+    private string? ValidationError { get; set; }
+    private bool WasVisible { get; set; }
+    private int? PreviousEditingPointId { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        if (IsVisible && (!WasVisible || EditingPoint?.Id != PreviousEditingPointId))
+        {
+            XValue = EditingPoint?.X.ToString("G", CultureInfo.InvariantCulture) ?? string.Empty;
+            YValue = EditingPoint?.Y.ToString("G", CultureInfo.InvariantCulture) ?? string.Empty;
+            ValidationError = null;
+        }
+
+        WasVisible = IsVisible;
+        PreviousEditingPointId = EditingPoint?.Id;
+    }
+
+    private Task SubmitAndClose() => AddValues(closeAfterAdd: true);
+
+    private Task AddAndAnother() => AddValues(closeAfterAdd: false);
+
+    private async Task AddValues(bool closeAfterAdd)
+    {
+        var x = ParseValue(XValue);
+        var y = ParseValue(YValue);
+        if (x is null || y is null)
+        {
+            ValidationError = "Enter a valid number for both X Value and Y Value.";
+            return;
+        }
+
+        if (EditingPoint is not null)
+        {
+            await OnUpdate.InvokeAsync(new DataPoint(EditingPoint.Id, x.Value, y.Value));
+        }
+        else
+        {
+            var id = Points.Select(point => point.Id).DefaultIfEmpty(0).Max() + 1;
+            await OnAdd.InvokeAsync(new DataPoint(id, x.Value, y.Value));
+        }
+
+        if (closeAfterAdd || EditingPoint is not null)
+        {
+            await OnClose.InvokeAsync();
+            return;
+        }
+
+        XValue = string.Empty;
+        YValue = string.Empty;
+        ValidationError = null;
+    }
+
+    private static double? ParseValue(string value) =>
+        double.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out var result) &&
+        double.IsFinite(result)
+            ? result
+            : null;
+}

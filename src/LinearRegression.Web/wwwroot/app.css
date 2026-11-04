@@ -94,11 +94,57 @@ h1 { color: var(--pink-dark); font-size: 20px; font-weight: 700; line-height: 1.
 .brand-lockup p { margin-top: 4px; color: var(--pink-muted); font-size: 12px; }
 .add-placeholder { border: 0; border-radius: 999px; background: var(--pink); color: var(--white); padding: 9px 18px; font-weight: 600; opacity: .58; cursor: not-allowed; }
 .table-panel { overflow: hidden; }
-.panel-heading { min-height: 58px; padding: 15px 20px; border-bottom: 1px solid var(--pink-soft); }
+.panel-heading { min-height: 58px; padding: 15px 20px; border-bottom: 1px solid var(--pink-soft); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .panel-heading h2, .section-heading h2, .plot-heading h2 { font-size: 16px; font-weight: 700; }
 .count-badge, .model-pill { padding: 4px 9px; border: 1px solid var(--pink-border); border-radius: 7px; background: var(--pink-tint); color: var(--pink-dark); font-family: var(--number-font); font-size: 11px; white-space: nowrap; }
-.placeholder-box { min-height: 220px; margin: 20px; border: 1px dashed var(--pink-mid); border-radius: 12px; background: var(--pink-tint); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--pink-muted); text-align: center; }
-.placeholder-icon { width: 28px; height: 28px; fill: none; stroke: var(--pink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.table-heading-actions { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
+.decimal-tabs { padding: 3px; display: inline-flex; align-items: center; gap: 2px; border: 1px solid var(--pink-border); border-radius: 9px; background: var(--pink-tint); }
+.decimal-tab { min-width: 32px; min-height: 28px; padding: 4px 8px; border: 0; border-radius: 6px; background: transparent; color: var(--pink-muted); font: 600 11px var(--number-font); cursor: pointer; }
+.decimal-tab:hover { background: var(--pink-soft); color: var(--pink-dark); }
+.decimal-tab.active { background: var(--white); color: var(--pink-dark); box-shadow: 0 1px 3px rgb(131 24 67 / 12%); }
+.table-add-button { min-height: 38px; padding: 8px 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--pink); border-radius: 9px; background: var(--pink); color: var(--white); font: inherit; font-size: 12px; font-weight: 600; white-space: nowrap; cursor: pointer; }
+.table-add-button:hover { border-color: var(--pink-dark); background: var(--pink-dark); }
+.table-add-button svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.regression-table-scroll { width: 100%; overflow-x: auto; background: var(--white); }
+.regression-table { width: 100%; table-layout: fixed; border-collapse: collapse; background: var(--white); color: var(--pink-dark); font-family: var(--number-font); font-size: 11px; }
+.regression-table th, .regression-table td { padding: 12px 6px; border: 1px solid var(--pink-soft); background: var(--white); color: var(--pink-dark); text-align: center; overflow-wrap: anywhere; }
+.regression-table thead th { background: var(--pink-tint); font-family: var(--text-font); font-size: 11px; font-weight: 700; }
+.regression-table tbody th { color: var(--pink-muted); font-weight: 500; }
+.regression-table tfoot th, .regression-table tfoot td { background: var(--pink-tint); font-weight: 700; }
+.table-pagination { min-height: 52px; padding: 8px 16px; display: flex; align-items: center; justify-content: flex-end; gap: 8px; border-top: 1px solid var(--pink-soft); }
+.pagination-button { width: 32px; height: 32px; padding: 7px; display: grid; place-items: center; border: 1px solid var(--pink-border); border-radius: 8px; background: var(--white); color: var(--pink-dark); cursor: pointer; }
+.pagination-button:hover:not(:disabled) { background: var(--pink-soft); }
+.pagination-button:disabled { color: var(--pink-muted); opacity: .45; cursor: not-allowed; }
+.pagination-button svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pagination-status { min-width: 88px; color: var(--pink-muted); font: 11px var(--number-font); text-align: center; }
+.table-row-actions { display: flex; align-items: center; justify-content: center; gap: 4px; }
+.table-row-action { width: 25px; height: 25px; padding: 4px; display: inline-grid; place-items: center; border: 1px solid var(--pink-border); border-radius: 6px; background: var(--white); color: var(--pink-dark); cursor: pointer; }
+.table-row-action svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.edit-row-button:hover { border-color: var(--pink-mid); background: var(--pink-soft); }
+.delete-row-button:hover { border-color: #dc2626; background: #dc2626; color: var(--white); }
+.add-values-backdrop { position: fixed; inset: 0; z-index: 1000; padding: 20px; display: grid; place-items: center; background: rgb(46 20 34 / 48%); }
+.add-values-modal { width: min(100%, 560px); padding: 22px; border: 1px solid var(--pink-border); border-radius: 16px; background: var(--white); box-shadow: 0 20px 60px rgb(46 20 34 / 24%); }
+.add-values-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.add-values-header h2 { font-size: 18px; font-weight: 700; }
+.modal-close-button { width: 34px; height: 34px; padding: 8px; display: grid; place-items: center; border: 1px solid var(--pink-border); border-radius: 9px; background: var(--white); color: var(--pink-dark); cursor: pointer; }
+.modal-close-button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+.modal-close-button:hover { background: var(--pink-soft); }
+.add-values-form { margin-top: 24px; }
+.add-values-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.value-field { min-width: 0; display: grid; gap: 7px; color: var(--pink-dark); font-size: 12px; font-weight: 600; }
+.number-input-wrap { min-height: 44px; padding-right: 4px; display: flex; align-items: center; border: 1px solid var(--pink-border); border-radius: 10px; background: var(--white); }
+.number-input-wrap:focus-within { border-color: var(--pink); box-shadow: 0 0 0 3px rgb(219 39 119 / 12%); }
+.number-input-wrap input { width: 100%; min-width: 0; height: 42px; padding: 8px 11px; border: 0; outline: 0; border-radius: 10px; background: transparent; color: var(--pink-dark); font: 14px var(--number-font); }
+.number-stepper { flex: 0 0 27px; display: grid; gap: 2px; }
+.number-stepper button { width: 25px; height: 17px; padding: 0; border: 0; border-radius: 4px; background: var(--pink-tint); color: var(--pink-dark); font-size: 12px; line-height: 1; cursor: pointer; }
+.number-stepper button:hover { background: var(--pink-soft); }
+.add-values-error { margin-top: 12px; color: #b42318; font-size: 12px; }
+.add-values-actions { margin-top: 24px; display: flex; justify-content: flex-end; gap: 10px; }
+.modal-secondary-button, .modal-primary-button { min-height: 38px; padding: 8px 14px; border: 1px solid var(--pink-border); border-radius: 9px; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer; }
+.modal-secondary-button { background: var(--white); color: var(--pink-dark); }
+.modal-secondary-button:hover { background: var(--pink-tint); }
+.modal-primary-button { border-color: var(--pink); background: var(--pink); color: var(--white); }
+.modal-primary-button:hover { border-color: var(--pink-dark); background: var(--pink-dark); }
 .formula-section { display: grid; gap: 14px; }
 .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .formula-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
@@ -148,4 +194,5 @@ h1 { color: var(--pink-dark); font-size: 20px; font-weight: 700; line-height: 1.
 .legend-centroid { width: 9px; height: 9px; border: 1px dashed var(--pink-line); border-radius: 50%; }
 .app-footer { padding: 10px 0 4px; border-top: 1px solid var(--pink-border); color: var(--pink-muted); font-size: 10px; text-align: center; }
 @media (max-width: 760px) { .app-shell { width: min(100% - 28px, 1000px); padding-top: 14px; gap: 16px; } .formula-grid { grid-template-columns: 1fr; gap: 12px; } .formula-card { padding: 17px; } .plot-heading { flex-direction: column; } .plot-title-group { min-width: 0; } .plot-controls { justify-content: flex-start; } }
-@media (max-width: 480px) { .app-header { padding: 14px; } .brand-lockup, .heading-copy { gap: 10px; } .brand-icon { width: 42px; height: 42px; flex-basis: 42px; } h1 { font-size: 17px; } .brand-lockup p { font-size: 11px; } .add-placeholder { padding: 8px 12px; } .section-heading { align-items: flex-start; flex-direction: column; } .plot-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; } .toggle-button { white-space: normal; } .chart-wrap { width: calc(100% - 24px); margin-top: 12px; } .plot-legend { justify-content: flex-start; padding-inline: 12px; } }
+@media (max-width: 560px) { .panel-heading { align-items: flex-start; flex-direction: column; } .table-heading-actions { width: 100%; justify-content: space-between; gap: 8px; } .table-add-button { padding-inline: 10px; font-size: 11px; } }
+@media (max-width: 480px) { .app-header { padding: 14px; } .brand-lockup, .heading-copy { gap: 10px; } .brand-icon { width: 42px; height: 42px; flex-basis: 42px; } h1 { font-size: 17px; } .brand-lockup p { font-size: 11px; } .panel-heading { padding: 13px 14px; } .table-add-button { padding: 7px 9px; font-size: 10px; } .decimal-tab { min-width: 28px; padding-inline: 6px; } .add-values-modal { padding: 18px; } .add-values-fields { gap: 10px; } .add-values-actions { gap: 7px; } .modal-secondary-button, .modal-primary-button { padding-inline: 10px; font-size: 11px; } .section-heading { align-items: flex-start; flex-direction: column; } .plot-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; } .toggle-button { white-space: normal; } .chart-wrap { width: calc(100% - 24px); margin-top: 12px; } .plot-legend { justify-content: flex-start; padding-inline: 12px; } }

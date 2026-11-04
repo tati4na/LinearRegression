@@ -1,15 +1,3 @@
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\bin\Debug\net10.0\LinearRegression.Core.deps.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\bin\Debug\net10.0\LinearRegression.Core.dll
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\bin\Debug\net10.0\LinearRegression.Core.pdb
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.GeneratedMSBuildEditorConfig.editorconfig
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.AssemblyInfoInputs.cache
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.AssemblyInfo.cs
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.csproj.CoreCompileInputs.cache
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.sourcelink.json
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.dll
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\refint\LinearRegression.Core.dll
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.pdb
-D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\ref\LinearRegression.Core.dll
 C:\Users\User\Desktop\Programming\LinearRegression\LinearRegression\src\LinearRegression.Core\bin\Debug\net10.0\LinearRegression.Core.deps.json
 C:\Users\User\Desktop\Programming\LinearRegression\LinearRegression\src\LinearRegression.Core\bin\Debug\net10.0\LinearRegression.Core.dll
 C:\Users\User\Desktop\Programming\LinearRegression\LinearRegression\src\LinearRegression.Core\bin\Debug\net10.0\LinearRegression.Core.pdb
@@ -28,6 +16,27 @@ C:\Users\User\AppData\Local\Temp\LinearRegressionBuild\LinearRegression.Core.pdb
 C:\Users\User\AppData\Local\Temp\LinearRegressionBuildFinal\LinearRegression.Core.deps.json
 C:\Users\User\AppData\Local\Temp\LinearRegressionBuildFinal\LinearRegression.Core.dll
 C:\Users\User\AppData\Local\Temp\LinearRegressionBuildFinal\LinearRegression.Core.pdb
+<<<<<<< HEAD
+=======
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\bin\Debug\net10.0\LinearRegression.Core.deps.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\bin\Debug\net10.0\LinearRegression.Core.dll
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\bin\Debug\net10.0\LinearRegression.Core.pdb
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.AssemblyInfoInputs.cache
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.AssemblyInfo.cs
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.csproj.CoreCompileInputs.cache
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.sourcelink.json
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.dll
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\refint\LinearRegression.Core.dll
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.pdb
+D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\ref\LinearRegression.Core.dll
+C:\Users\USER\AppData\Local\Temp\LinearRegression-build\LinearRegression.Core.deps.json
+C:\Users\USER\AppData\Local\Temp\LinearRegression-build\LinearRegression.Core.dll
+C:\Users\USER\AppData\Local\Temp\LinearRegression-build\LinearRegression.Core.pdb
+C:\Users\USER\AppData\Local\Temp\LinearRegression-frontend-build\LinearRegression.Core.deps.json
+C:\Users\USER\AppData\Local\Temp\LinearRegression-frontend-build\LinearRegression.Core.dll
+C:\Users\USER\AppData\Local\Temp\LinearRegression-frontend-build\LinearRegression.Core.pdb
+>>>>>>> b925d50cac868d725e28945e4bb806da82250fdd
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Core\bin\Debug\net10.0\LinearRegression.Core.deps.json
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Core\bin\Debug\net10.0\LinearRegression.Core.dll
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Core\bin\Debug\net10.0\LinearRegression.Core.pdb

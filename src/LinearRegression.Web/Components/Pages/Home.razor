@@ -24,7 +24,10 @@
 		<button type="button" class="add-placeholder" disabled>＋ <span>Add</span></button>
 	</header>
 
-	<RegressionTablePlaceholder Points="Points" />
+	<RegressionTablePlaceholder Points="Points"
+	                            OnPointAdded="AddPoint"
+	                            OnPointUpdated="UpdatePoint"
+	                            OnPointDeleted="RemovePoint" />
 	<FormulaCards Result="Result" Decimals="Decimals" />
 	<ScatterPlot Points="Points" Result="Result" Decimals="Decimals" OnPointAdded="AddPoint" />
 </main>
@@ -39,6 +42,24 @@
 	private void AddPoint(DataPoint point)
 	{
 		Points.Add(point);
+		Recompute();
+	}
+
+	private void UpdatePoint(DataPoint updatedPoint)
+	{
+		var index = Points.FindIndex(point => point.Id == updatedPoint.Id);
+		if (index < 0)
+		{
+			throw new InvalidOperationException($"Cannot update missing data point {updatedPoint.Id}.");
+		}
+
+		Points[index] = updatedPoint;
+		Recompute();
+	}
+
+	private void RemovePoint(int id)
+	{
+		Points.RemoveAll(point => point.Id == id);
 		Recompute();
 	}
 
