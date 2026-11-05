@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\src\\LinearRegression\\LinearRegression.csproj": {}
+    "C:\\Users\\seanp\\OneDrive\\Desktop\\VS CODE\\LinearRegression\\src\\LinearRegression\\LinearRegression.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\src\\LinearRegression\\LinearRegression.csproj": {
+    "C:\\Users\\seanp\\OneDrive\\Desktop\\VS CODE\\LinearRegression\\src\\LinearRegression\\LinearRegression.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\src\\LinearRegression\\LinearRegression.csproj",
+        "projectUniqueName": "C:\\Users\\seanp\\OneDrive\\Desktop\\VS CODE\\LinearRegression\\src\\LinearRegression\\LinearRegression.csproj",
         "projectName": "LinearRegression",
-        "projectPath": "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\src\\LinearRegression\\LinearRegression.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\src\\LinearRegression\\obj\\",
+        "projectPath": "C:\\Users\\seanp\\OneDrive\\Desktop\\VS CODE\\LinearRegression\\src\\LinearRegression\\LinearRegression.csproj",
+        "packagesPath": "C:\\Users\\seanp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\seanp\\OneDrive\\Desktop\\VS CODE\\LinearRegression\\src\\LinearRegression\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\seanp\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -61,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

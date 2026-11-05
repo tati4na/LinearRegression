@@ -1,0 +1,51 @@
+@using System.Globalization
+@using LinearRegression.Web.Models
+
+<section class="panel interpretation-panel" aria-labelledby="interpretation-title">
+    <div class="interpretation-heading">
+        <div>
+            <h2 id="interpretation-title">What does the line show?</h2>
+            <p class="interpretation-subtitle">Look at the direction of the fitted line to understand the relationship between x and y.</p>
+        </div>
+        <span class="interpretation-badge @StatusClass">@StatusText</span>
+    </div>
+
+    @if (Result.IsValid)
+    {
+        <div class="interpretation-content">
+            <div class="interpretation-direction @StatusClass" aria-hidden="true">@DirectionSymbol</div>
+            <div>
+                <p class="interpretation-message">@Explanation</p>
+                <p class="interpretation-detail">The slope is <strong>@SlopeText</strong>. @SlopeRule</p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p class="interpretation-empty">Add at least 2 points with different x values to interpret the regression line.</p>
+    }
+</section>
+
+@code {
+    [Parameter, EditorRequired] public RegressionResult Result { get; set; } = default!;
+    [Parameter] public int Decimals { get; set; } = 3;
+
+    private bool HasPositiveSlope => Result.IsValid && Result.B > 0;
+    private bool HasNegativeSlope => Result.IsValid && Result.B < 0;
+    private string StatusClass => !Result.IsValid ? "unavailable" : HasPositiveSlope ? "positive" : HasNegativeSlope ? "negative" : "neutral";
+    private string StatusText => !Result.IsValid ? "Waiting for data" : HasPositiveSlope ? "Positive correlation" : HasNegativeSlope ? "Negative correlation" : "No correlation";
+    private string DirectionSymbol => HasPositiveSlope ? "↗" : HasNegativeSlope ? "↘" : "→";
+    private string Explanation => HasPositiveSlope
+        ? "As x increases, y tends to increase."
+        : HasNegativeSlope
+            ? "As x increases, y tends to decrease."
+            : "Changes in x do not change the predicted y."
+    ;
+    private string SlopeRule => HasPositiveSlope
+        ? "A positive slope means the line rises from left to right."
+        : HasNegativeSlope
+            ? "A negative slope means the line falls from left to right."
+            : "A zero slope means the line is flat."
+    ;
+    private string SlopeText => Result.B.ToString($"F{Math.Clamp(Decimals, 0, 15)}", CultureInfo.InvariantCulture);
+}

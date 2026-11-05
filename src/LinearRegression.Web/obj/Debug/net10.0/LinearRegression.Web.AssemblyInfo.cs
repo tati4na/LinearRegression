@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LinearRegression.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c1f8421f32445bf65e91692c5e3abbfd32bcafa5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0909dd78f5fc52a65d3c7cfc436138fab4118e6b")]
 [assembly: System.Reflection.AssemblyProductAttribute("LinearRegression.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LinearRegression.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

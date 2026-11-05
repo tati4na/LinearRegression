@@ -1,18 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4ZPW1CUW8XA=",
+  "dgSpecHash": "trw+Mli5XBs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\src\\LinearRegression.Core\\LinearRegression.Core.csproj",
+  "projectFilePath": "C:\\Users\\seanp\\OneDrive\\Desktop\\VS CODE\\LinearRegression\\src\\LinearRegression.Core\\LinearRegression.Core.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "message": "Problem reading the cache file C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\src\\LinearRegression.Core\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
-      "projectPath": "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\src\\LinearRegression.Core\\LinearRegression.Core.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\User\\Desktop\\Programming\\LinearRegression\\src\\LinearRegression.Core\\LinearRegression.Core.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }

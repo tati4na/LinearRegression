@@ -28,3 +28,18 @@ D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression\obj\D
 D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression\obj\Debug\net10.0\LinearRegression.pdb
 D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression\obj\Debug\net10.0\LinearRegression.genruntimeconfig.cache
 D:\Alex\BSIT 3\FIRST SEM\PROF ELEC 3\LinearRegression\src\LinearRegression\obj\Debug\net10.0\ref\LinearRegression.dll
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression\bin\Debug\net10.0\LinearRegression.exe
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression\bin\Debug\net10.0\LinearRegression.deps.json
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression\bin\Debug\net10.0\LinearRegression.runtimeconfig.json
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression\bin\Debug\net10.0\LinearRegression.dll
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression\bin\Debug\net10.0\LinearRegression.pdb
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression\obj\Debug\net10.0\LinearRegression.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression\obj\Debug\net10.0\LinearRegression.AssemblyInfoInputs.cache
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression\obj\Debug\net10.0\LinearRegression.AssemblyInfo.cs
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression\obj\Debug\net10.0\LinearRegression.csproj.CoreCompileInputs.cache
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression\obj\Debug\net10.0\LinearRegression.sourcelink.json
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression\obj\Debug\net10.0\LinearRegression.dll
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression\obj\Debug\net10.0\refint\LinearRegression.dll
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression\obj\Debug\net10.0\LinearRegression.pdb
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression\obj\Debug\net10.0\LinearRegression.genruntimeconfig.cache
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression\obj\Debug\net10.0\ref\LinearRegression.dll

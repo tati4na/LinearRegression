@@ -49,3 +49,15 @@ C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Core\obj
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\refint\LinearRegression.Core.dll
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.pdb
 C:\Users\User\Desktop\Programming\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\ref\LinearRegression.Core.dll
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression.Core\bin\Debug\net10.0\LinearRegression.Core.deps.json
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression.Core\bin\Debug\net10.0\LinearRegression.Core.dll
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression.Core\bin\Debug\net10.0\LinearRegression.Core.pdb
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.AssemblyInfoInputs.cache
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.AssemblyInfo.cs
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.csproj.CoreCompileInputs.cache
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.sourcelink.json
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.dll
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\refint\LinearRegression.Core.dll
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\LinearRegression.Core.pdb
+C:\Users\seanp\OneDrive\Desktop\VS CODE\LinearRegression\src\LinearRegression.Core\obj\Debug\net10.0\ref\LinearRegression.Core.dll
